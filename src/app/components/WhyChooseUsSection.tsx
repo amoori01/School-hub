@@ -37,6 +37,8 @@ export function WhyChooseUsSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const bgRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -92,24 +94,23 @@ export function WhyChooseUsSection() {
   };
 
   return (
-    <section ref={sectionRef} id="why-choose-us" className="py-24 bg-slate-950 relative overflow-hidden">
+    <section ref={sectionRef} id="why-choose-us" className="py-24 bg-background relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle,_rgba(56,189,248,0.08),_transparent_70%)] blur-3xl opacity-40" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-[radial-gradient(circle,_rgba(236,72,153,0.08),_transparent_70%)] blur-3xl opacity-40" />
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div ref={bgRef} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[radial-gradient(circle,_rgba(56,189,248,0.1),_transparent_70%)] dark:bg-[radial-gradient(circle,_rgba(56,189,248,0.08),_transparent_70%)] opacity-30 dark:opacity-20" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}
         <div ref={headerRef} className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-900/70 text-sky-100 text-sm font-medium mb-4 border border-cyan-300/40 shadow-[0_18px_35px_rgba(15,23,42,0.95)] backdrop-blur-md">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-secondary/50 dark:bg-secondary text-secondary-foreground text-sm font-medium mb-4 border border-primary/20 dark:border-cyan-300/40 shadow-sm backdrop-blur-md">
             Why Choose Us
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-50 mb-4">
-            Built for Modern Education
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            The Preferred Choice for Modern Schools
           </h2>
-          <p className="text-xl text-slate-300">
-            The most advanced school management platform trusted by institutions worldwide
+          <p className="text-xl text-muted-foreground">
+            Experience the difference with a platform built for educational excellence
           </p>
         </div>
 
@@ -119,27 +120,42 @@ export function WhyChooseUsSection() {
             const Icon = reason.icon;
             return (
               <div ref={addToRefs} key={index}>
-                <Card 
-                  className="p-8 border-2 border-slate-800/80 hover:border-transparent hover:shadow-[0_22px_55px_rgba(15,23,42,0.95)] transition-all duration-300 bg-slate-950/80 group relative overflow-hidden rounded-2xl backdrop-blur-xl cursor-default"
+                <Card
+                  className="h-full p-8 border border-border dark:border-slate-800/80 hover:border-primary/50 dark:hover:border-sky-400/60 transition-all duration-300 bg-card/50 dark:bg-slate-950/80 group rounded-2xl backdrop-blur-xl text-center shadow-sm hover:shadow-xl dark:shadow-none cursor-default"
                 >
-                  {/* Background gradient on hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${reason.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
-                  
-                  <div className="relative">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${reason.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-[0_16px_40px_rgba(56,189,248,0.7)] group-hover:shadow-[0_20px_50px_rgba(56,189,248,0.8)]`}>
-                      <Icon className="h-8 w-8 text-slate-950" />
-                    </div>
-                    <h3 className="text-xl font-bold text-slate-50 mb-3 group-hover:text-sky-200 transition-colors duration-300">
-                      {reason.title}
-                    </h3>
-                    <p className="text-slate-300 leading-relaxed group-hover:text-slate-200 transition-colors duration-300">
-                      {reason.description}
-                    </p>
+                  <div className="w-16 h-16 bg-gradient-to-br from-sky-400 via-cyan-300 to-fuchsia-400 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300 shadow-[0_16px_40px_rgba(56,189,248,0.3)] dark:shadow-[0_16px_40px_rgba(56,189,248,0.7)]">
+                    <Icon className="h-8 w-8 text-white dark:text-slate-950" />
                   </div>
+                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+                    {reason.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors duration-300">
+                    {reason.description}
+                  </p>
                 </Card>
               </div>
             );
           })}
+        </div>
+
+        {/* Summary stats */}
+        <div ref={statsRef} className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto border-t border-border pt-16">
+          <div className="text-center">
+            <div className="text-4xl font-bold text-primary mb-2">99.9%</div>
+            <div className="text-sm text-muted-foreground font-medium">Uptime Guarantee</div>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl font-bold text-primary mb-2">24/7</div>
+            <div className="text-sm text-muted-foreground font-medium">Expert Support</div>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl font-bold text-primary mb-2">10+</div>
+            <div className="text-sm text-muted-foreground font-medium">Countries Reached</div>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl font-bold text-primary mb-2">50k+</div>
+            <div className="text-sm text-muted-foreground font-medium">Daily Active Users</div>
+          </div>
         </div>
       </div>
     </section>
