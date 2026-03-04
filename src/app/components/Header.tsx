@@ -37,7 +37,7 @@ export function Header() {
     document.documentElement.classList.toggle("dark", newTheme === "dark");
   };
   const location = useLocation();
-  
+
   const headerRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLElement>(null);
@@ -94,30 +94,35 @@ export function Header() {
     // Scroll to top button animation
     gsap.fromTo(scrollButtonRef.current,
       { opacity: 0, scale: 0.8, y: 20 },
-      { 
-        opacity: showScrollTop ? 1 : 0, 
+      {
+        opacity: showScrollTop ? 1 : 0,
         scale: showScrollTop ? 1 : 0.8,
         y: showScrollTop ? 0 : 20,
-        duration: 0.3, 
-        ease: "power2.out" 
+        duration: 0.3,
+        ease: "power2.out"
       }
     );
   }, [showScrollTop]);
 
   useEffect(() => {
     // Header background animation on scroll
+    // In dark mode, we use a darker slate, in light mode we use a light slate/white
+    const isDark = document.documentElement.classList.contains("dark");
     gsap.to(headerRef.current, {
       backgroundColor: scrolled
-        ? "rgba(15, 23, 42, 0.96)"
-        : document.documentElement.classList.contains("dark") ? "rgba(15, 23, 42, 0.88)" : "rgba(248, 250, 252, 0.88)",
+        ? (isDark ? "rgba(15, 23, 42, 0.96)" : "rgba(255, 255, 255, 0.96)")
+        : (isDark ? "rgba(15, 23, 42, 0.88)" : "rgba(255, 255, 255, 0.88)"),
+      borderColor: scrolled
+        ? (isDark ? "rgba(30, 41, 59, 0.8)" : "rgba(226, 232, 240, 0.8)")
+        : "transparent",
       backdropFilter: scrolled ? "blur(22px)" : "blur(14px)",
       boxShadow: scrolled
-        ? "0 18px 45px -24px rgba(15, 23, 42, 0.85)"
-        : "0 10px 25px -24px rgba(15, 23, 42, 0.6)",
+        ? (isDark ? "0 18px 45px -24px rgba(0, 0, 0, 0.5)" : "0 18px 45px -24px rgba(15, 23, 42, 0.15)")
+        : "0 10px 25px -24px rgba(15, 23, 42, 0.1)",
       duration: 0.3,
       ease: "power2.out"
     });
-  }, [scrolled]);
+  }, [scrolled, theme]);
 
   useEffect(() => {
     if (mobileMenuOpen && mobileMenuRef.current) {
@@ -140,8 +145,8 @@ export function Header() {
           <div className="flex h-20 items-center justify-between">
             {/* Logo */}
             <div ref={logoRef} className="flex items-center">
-              <Link 
-                to="/" 
+              <Link
+                to="/"
                 onClick={(e) => handleNavClick(e, '/')}
                 className="flex items-center space-x-3 group"
               >
@@ -159,7 +164,7 @@ export function Header() {
 
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <button 
+                  <button
                     className="text-base font-medium text-foreground/80 hover:text-primary transition-all duration-300 flex items-center gap-1 group"
                   >
                     Product
@@ -184,32 +189,29 @@ export function Header() {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-              <Link 
-                to="/pricing" 
+              <Link
+                to="/pricing"
                 onClick={(e) => handleNavClick(e, '/pricing')}
-                className={`text-base font-medium transition-all duration-300 relative group ${
-                  isActive('/pricing') ? 'text-primary' : 'text-foreground/80 hover:text-primary'
-                }`}
+                className={`text-base font-medium transition-all duration-300 relative group ${isActive('/pricing') ? 'text-primary' : 'text-foreground/80 hover:text-primary'
+                  }`}
               >
                 Pricing
                 <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-fuchsia-400 transform origin-left transition-transform duration-300 ${isActive('/pricing') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
               </Link>
-              <Link 
-                to="/about" 
+              <Link
+                to="/about"
                 onClick={(e) => handleNavClick(e, '/about')}
-                className={`text-base font-medium transition-all duration-300 relative group ${
-                  isActive('/about') ? 'text-primary' : 'text-foreground/80 hover:text-primary'
-                }`}
+                className={`text-base font-medium transition-all duration-300 relative group ${isActive('/about') ? 'text-primary' : 'text-foreground/80 hover:text-primary'
+                  }`}
               >
                 About
                 <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-fuchsia-400 transform origin-left transition-transform duration-300 ${isActive('/about') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
               </Link>
-              <Link 
-                to="/contact" 
+              <Link
+                to="/contact"
                 onClick={(e) => handleNavClick(e, '/contact')}
-                className={`text-base font-medium transition-all duration-300 relative group ${
-                  isActive('/contact') ? 'text-primary' : 'text-foreground/80 hover:text-primary'
-                }`}
+                className={`text-base font-medium transition-all duration-300 relative group ${isActive('/contact') ? 'text-primary' : 'text-foreground/80 hover:text-primary'
+                  }`}
               >
                 Contact
                 <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-fuchsia-400 transform origin-left transition-transform duration-300 ${isActive('/contact') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
@@ -269,36 +271,36 @@ export function Header() {
                 <div className="space-y-2">
                   <span className="text-sm font-semibold text-foreground">Product</span>
                   <div className="pl-4 flex flex-col space-y-2">
-                    <Link 
-                      to="/product#features" 
+                    <Link
+                      to="/product#features"
                       onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                       className="text-sm text-foreground/70 hover:text-primary transition-colors duration-300"
                     >
                       Feature Tour
                     </Link>
-                    <Link 
-                      to="/product#student-information-system" 
+                    <Link
+                      to="/product#student-information-system"
                       onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                       className="text-sm text-foreground/70 hover:text-primary transition-colors duration-300"
                     >
                       Student Information System
                     </Link>
-                    <Link 
-                      to="/product#why-choose-us" 
+                    <Link
+                      to="/product#why-choose-us"
                       onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                       className="text-sm text-foreground/70 hover:text-primary transition-colors duration-300"
                     >
                       Why Choose Us
                     </Link>
-                    <Link 
-                      to="/product#solutions" 
+                    <Link
+                      to="/product#solutions"
                       onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                       className="text-sm text-foreground/70 hover:text-primary transition-colors duration-300"
                     >
                       Solutions
                     </Link>
-                    <Link 
-                      to="/product#testimonials" 
+                    <Link
+                      to="/product#testimonials"
                       onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
                       className="text-sm text-foreground/70 hover:text-primary transition-colors duration-300"
                     >
@@ -306,28 +308,26 @@ export function Header() {
                     </Link>
                   </div>
                 </div>
-                <Link 
-                  to="/pricing" 
+                <Link
+                  to="/pricing"
                   onClick={(e) => { setMobileMenuOpen(false); handleNavClick(e, '/pricing'); }}
                   className="text-sm text-foreground/70 hover:text-primary transition-colors duration-300"
                 >
                   Pricing
                 </Link>
-                <Link 
-                  to="/about" 
+                <Link
+                  to="/about"
                   onClick={(e) => { setMobileMenuOpen(false); handleNavClick(e, '/about'); }}
-                  className={`text-sm transition-colors duration-300 ${
-                    isActive('/about') ? 'text-primary font-semibold' : 'text-foreground/70 hover:text-primary'
-                  }`}
+                  className={`text-sm transition-colors duration-300 ${isActive('/about') ? 'text-primary font-semibold' : 'text-foreground/70 hover:text-primary'
+                    }`}
                 >
                   About
                 </Link>
-                <Link 
-                  to="/contact" 
+                <Link
+                  to="/contact"
                   onClick={(e) => { setMobileMenuOpen(false); handleNavClick(e, '/contact'); }}
-                  className={`text-sm transition-colors duration-300 ${
-                    isActive('/contact') ? 'text-primary font-semibold' : 'text-foreground/70 hover:text-primary'
-                  }`}
+                  className={`text-sm transition-colors duration-300 ${isActive('/contact') ? 'text-primary font-semibold' : 'text-foreground/70 hover:text-primary'
+                    }`}
                 >
                   Contact
                 </Link>
@@ -374,9 +374,8 @@ export function Header() {
       <button
         ref={scrollButtonRef}
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-[#e35336] text-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 ${
-          showScrollTop ? 'opacity-100 visible' : 'opacity-0 invisible'
-        }`}
+        className={`fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-[#e35336] text-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 ${showScrollTop ? 'opacity-100 visible' : 'opacity-0 invisible'
+          }`}
         aria-label="Scroll to top"
       >
         <ArrowUp className="h-5 w-5" />

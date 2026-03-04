@@ -71,7 +71,7 @@ export function SolutionsSection() {
         if (!card) return;
 
         const direction = index % 2 === 0 ? -60 : 60;
-        
+
         gsap.fromTo(
           card,
           { opacity: 0, x: direction, scale: 0.95 },
@@ -104,23 +104,23 @@ export function SolutionsSection() {
   };
 
   return (
-    <section ref={sectionRef} id="solutions" className="py-24 bg-slate-950 relative overflow-hidden">
+    <section ref={sectionRef} id="solutions" className="py-24 bg-background relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[conic-gradient(from_180deg,_rgba(56,189,248,0.1),_rgba(236,72,153,0.1),_transparent)] blur-3xl opacity-30" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle,_rgba(236,72,153,0.08),_transparent_70%)] blur-3xl opacity-30" />
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-[conic-gradient(from_180deg,_rgba(56,189,248,0.1),_rgba(236,72,153,0.1),_transparent)] blur-3xl opacity-30 dark:opacity-20" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full bg-[radial-gradient(circle,_rgba(236,72,153,0.08),_transparent_70%)] blur-3xl opacity-30 dark:opacity-20" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}
         <div ref={headerRef} className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-900/70 text-sky-100 text-sm font-medium mb-4 border border-cyan-300/40 shadow-[0_18px_35px_rgba(15,23,42,0.95)] backdrop-blur-md">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-secondary/50 dark:bg-secondary text-secondary-foreground text-sm font-medium mb-4 border border-primary/20 dark:border-cyan-300/40 shadow-sm backdrop-blur-md">
             Solutions
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-50 mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Built for Every Type of Institution
           </h2>
-          <p className="text-xl text-slate-300">
+          <p className="text-xl text-muted-foreground">
             Tailored solutions that adapt to your specific educational environment
           </p>
         </div>
@@ -132,33 +132,33 @@ export function SolutionsSection() {
             return (
               <div ref={addToRefs} key={index}>
                 <Card
-                  className="p-8 border-2 border-slate-800/80 hover:border-transparent hover:shadow-[0_22px_55px_rgba(15,23,42,0.95)] transition-all duration-300 bg-slate-950/80 group relative overflow-hidden rounded-2xl backdrop-blur-xl cursor-default"
+                  className="p-8 border-2 border-border dark:border-slate-800/80 hover:border-primary/50 dark:hover:border-transparent transition-all duration-300 bg-card/50 dark:bg-slate-950/80 group relative overflow-hidden rounded-2xl backdrop-blur-xl cursor-default shadow-sm hover:shadow-xl dark:shadow-none"
                 >
                   {/* Background gradient */}
                   <div
                     className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${solution.color} opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-300`}
                   ></div>
-                  
+
                   <div className="relative">
                     {/* Icon */}
                     <div
-                      className={`w-16 h-16 bg-gradient-to-br ${solution.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-[0_16px_40px_rgba(56,189,248,0.7)]`}
+                      className={`w-16 h-16 bg-gradient-to-br ${solution.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-[0_16px_40px_rgba(56,189,248,0.3)] dark:shadow-[0_16px_40px_rgba(56,189,248,0.7)]`}
                     >
-                      <Icon className="h-8 w-8 text-slate-950" />
+                      <Icon className="h-8 w-8 text-white dark:text-slate-950" />
                     </div>
 
                     {/* Content */}
-                    <h3 className="text-2xl font-bold text-slate-50 mb-3 group-hover:text-sky-200 transition-colors duration-300">
+                    <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                       {solution.title}
                     </h3>
-                    <p className="text-slate-300 mb-6 leading-relaxed group-hover:text-slate-200 transition-colors duration-300">
+                    <p className="text-muted-foreground mb-6 leading-relaxed group-hover:text-foreground transition-colors duration-300">
                       {solution.description}
                     </p>
 
                     {/* Features list */}
                     <ul className="space-y-2 mb-6">
                       {solution.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center text-slate-300 group-hover:text-slate-200 transition-colors duration-300">
+                        <li key={featureIndex} className="flex items-center text-muted-foreground group-hover:text-foreground transition-colors duration-300">
                           <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${solution.color} mr-3`}></div>
                           {feature}
                         </li>
@@ -166,7 +166,7 @@ export function SolutionsSection() {
                     </ul>
 
                     {/* CTA */}
-                    <Button variant="ghost" className="group/btn p-0 h-auto text-sky-300 hover:text-sky-200 font-semibold">
+                    <Button variant="ghost" className="group/btn p-0 h-auto text-primary hover:text-primary/80 dark:text-sky-300 dark:hover:text-sky-200 font-semibold transition-colors">
                       Learn more
                       <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
                     </Button>

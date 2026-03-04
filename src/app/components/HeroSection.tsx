@@ -44,15 +44,15 @@ export function HeroSection() {
 
       // Initial set for all elements
       gsap.set([badgeRef.current], { opacity: 0, y: -20, scale: 0.9 });
-      gsap.set(headlineLine1Ref.current?.children || [], { 
-        opacity: 0, 
-        y: 60, 
+      gsap.set(headlineLine1Ref.current?.children || [], {
+        opacity: 0,
+        y: 60,
         rotationX: -45,
         filter: "blur(10px)"
       });
-      gsap.set(headlineLine2Ref.current?.children || [], { 
-        opacity: 0, 
-        y: 60, 
+      gsap.set(headlineLine2Ref.current?.children || [], {
+        opacity: 0,
+        y: 60,
         rotationX: -45,
         filter: "blur(10px)"
       });
@@ -67,11 +67,11 @@ export function HeroSection() {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
       // Badge animation
-      tl.to(badgeRef.current, { 
-        opacity: 1, 
-        y: 0, 
-        scale: 1, 
-        duration: 0.6 
+      tl.to(badgeRef.current, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.6
       }, 0);
 
       // Headline line 1 - letter by letter
@@ -101,18 +101,18 @@ export function HeroSection() {
       }
 
       // Subtext slide up with fade
-      tl.to(subtextRef.current, { 
-        opacity: 1, 
-        y: 0, 
-        duration: 0.7 
+      tl.to(subtextRef.current, {
+        opacity: 1,
+        y: 0,
+        duration: 0.7
       }, 0.9);
 
       // CTA buttons
-      tl.to(ctaRef.current, { 
-        opacity: 1, 
-        y: 0, 
+      tl.to(ctaRef.current, {
+        opacity: 1,
+        y: 0,
         scale: 1,
-        duration: 0.6 
+        duration: 0.6
       }, 1.1);
 
       // Stats with stagger
@@ -250,7 +250,7 @@ export function HeroSection() {
 
       // Stats section - horizontal scroll-linked animation
       if (statsRef.current) {
-        gsap.fromTo(statsRef.current?.children || [], 
+        gsap.fromTo(statsRef.current?.children || [],
           { y: 0, opacity: 1 },
           {
             y: -20,
@@ -301,15 +301,15 @@ export function HeroSection() {
       className="relative pt-28 pb-32 overflow-hidden bg-background"
     >
       {/* Animated gradient background - dark mode only */}
-      <div ref={gradientRef} className="absolute inset-0 dark:block hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#1d2642,_#020617_55%,_#020617_100%)]" />
+      <div className="absolute inset-0 dark:block hidden overflow-hidden">
+        <div ref={gradientRef} className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#1d2642,_#020617_55%,_#020617_100%)]" />
         <div className="pointer-events-none absolute -top-40 -right-32 h-96 w-96 rounded-full bg-[conic-gradient(from_220deg,_rgba(56,189,248,0.6),_rgba(236,72,153,0.55),_transparent)] blur-3xl opacity-70 animate-pulse-slow" />
         <div className="pointer-events-none absolute -bottom-28 -left-24 h-80 w-80 rounded-full bg-[radial-gradient(circle,_rgba(56,189,248,0.3),_transparent_70%)] blur-3xl opacity-70 animate-pulse-slow-delayed" />
       </div>
 
       {/* Light mode gradient */}
-      <div ref={gradientRef} className="absolute inset-0 dark:hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-white" />
+      <div className="absolute inset-0 dark:hidden overflow-hidden">
+        <div ref={gradientRef} className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-white" />
         <div className="pointer-events-none absolute -top-40 -right-32 h-96 w-96 rounded-full bg-[conic-gradient(from_220deg,_rgba(99,102,241,0.3),_rgba(168,85,247,0.3),_transparent)] blur-3xl opacity-50" />
         <div className="pointer-events-none absolute -bottom-28 -left-24 h-80 w-80 rounded-full bg-[radial-gradient(circle,_rgba(56,189,248,0.2),_transparent_70%)] blur-3xl opacity-50" />
       </div>
@@ -321,7 +321,7 @@ export function HeroSection() {
             {/* Badge */}
             <div
               ref={badgeRef}
-              className="inline-flex items-center px-5 py-2.5 rounded-full bg-secondary border border-primary/30 text-sm font-medium text-secondary-foreground shadow-md backdrop-blur-md mb-7 cursor-default hover:scale-105 transition-transform duration-300"
+              className="inline-flex items-center px-5 py-2.5 rounded-full bg-secondary/50 dark:bg-secondary border border-primary/30 text-sm font-medium text-secondary-foreground shadow-md backdrop-blur-md mb-7 cursor-default hover:scale-105 transition-transform duration-300"
             >
               <span className="mr-3 flex h-2 w-2 items-center justify-center">
                 <span className="inline-block h-2 w-2 rounded-full bg-gradient-to-r from-primary to-fuchsia-400 animate-pulse" />
@@ -360,7 +360,7 @@ export function HeroSection() {
             >
               <Button
                 size="lg"
-                className="relative overflow-hidden bg-[#e35336] dark:bg-[#f47236] text-white hover:bg-[#c4452b] dark:hover:bg-[#e35336] text-base px-8 py-6 rounded-2xl font-semibold transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 border border-[#e35336]/40 group"
+                className="relative overflow-hidden bg-[#e35336] dark:bg-[#f47236] text-white hover:bg-[#c4452b] dark:hover:bg-[#e35336] text-base px-8 py-6 rounded-2xl font-semibold transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 border border-[#e35336]/40 group shadow-lg shadow-orange-500/20"
               >
                 <span className="relative flex items-center z-10">
                   Request a live demo
@@ -371,7 +371,7 @@ export function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border border-border bg-background dark:bg-background/60 hover:bg-secondary dark:hover:bg-secondary text-foreground dark:text-foreground text-base px-8 py-6 rounded-2xl font-medium transition-all duration-300 hover:border-primary/50 hover:text-primary hover:scale-[1.02] active:scale-[0.98]"
+                className="border border-border bg-background dark:bg-background/60 hover:bg-secondary dark:hover:bg-secondary text-foreground text-base px-8 py-6 rounded-2xl font-medium transition-all duration-300 hover:border-primary/50 hover:text-primary hover:scale-[1.02] active:scale-[0.98] shadow-sm"
               >
                 <Play className="mr-2 h-5 w-5" />
                 Watch 3‑minute overview
@@ -400,23 +400,23 @@ export function HeroSection() {
           <div ref={imageRef} className="relative perspective-1000">
             <div className="relative transform preserve-3d">
               {/* Main dashboard image */}
-              <div className="relative rounded-3xl overflow-hidden shadow-[0_32px_80px_rgba(15,23,42,0.95)] border border-border bg-card backdrop-blur-xl">
+              <div className="relative rounded-3xl overflow-hidden shadow-[0_32px_80px_rgba(15,23,42,0.95)] dark:shadow-[0_32px_80px_rgba(0,0,0,0.8)] border border-border bg-card backdrop-blur-xl">
                 <ImageWithFallback
                   src="https://images.unsplash.com/photo-1732203971761-e9d4a6f5e93f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBkYXNoYm9hcmQlMjBpbnRlcmZhY2UlMjBzY3JlZW58ZW58MXx8fHwxNzcxMjM5MDI2fDA&ixlib=rb-4.1.0&q=80&w=1080"
                   alt="School Management Dashboard"
                   className="w-full h-auto transform hover:scale-[1.03] transition-transform duration-700 will-change-transform"
                 />
                 {/* Enhanced overlay gradient */}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-primary/15 via-transparent to-fuchsia-500/18" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-fuchsia-500/10" />
               </div>
 
               {/* Floating card 1 - Student stats */}
               <div
                 ref={floatingCard1Ref}
-                className="hidden lg:block absolute -left-10 top-1/4 bg-card/95 backdrop-blur-xl rounded-2xl shadow-[0_18px_45px_rgba(15,23,42,0.95)] p-5 border border-border hover:border-primary/50 transition-all duration-300 cursor-default group"
+                className="hidden lg:block absolute -left-10 top-1/4 bg-card/95 dark:bg-card/90 backdrop-blur-xl rounded-2xl shadow-xl dark:shadow-none p-5 border border-border transition-all duration-300 cursor-default group"
               >
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-sky-400 rounded-xl flex items-center justify-center shadow-[0_14px_35px_rgba(16,185,129,0.7)] group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-sky-400 rounded-xl flex items-center justify-center shadow-[0_14px_35px_rgba(16,185,129,0.4)] dark:shadow-[0_14px_35px_rgba(16,185,129,0.7)] group-hover:scale-110 transition-transform duration-300">
                     <svg className="w-6 h-6 text-slate-950" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
@@ -431,10 +431,10 @@ export function HeroSection() {
               {/* Floating card 2 - Attendance */}
               <div
                 ref={floatingCard2Ref}
-                className="hidden lg:block absolute -right-10 bottom-1/4 bg-card/95 backdrop-blur-xl rounded-2xl shadow-[0_18px_45px_rgba(15,23,42,0.95)] p-5 border border-border hover:border-primary/50 transition-all duration-300 cursor-default group"
+                className="hidden lg:block absolute -right-10 bottom-1/4 bg-card/95 dark:bg-card/90 backdrop-blur-xl rounded-2xl shadow-xl dark:shadow-none p-5 border border-border transition-all duration-300 cursor-default group"
               >
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary via-cyan-300 to-fuchsia-400 rounded-xl flex items-center justify-center shadow-[0_14px_35px_rgba(56,189,248,0.7)] group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary via-cyan-300 to-fuchsia-400 rounded-xl flex items-center justify-center shadow-[0_14px_35px_rgba(56,189,248,0.4)] dark:shadow-[0_14px_35px_rgba(56,189,248,0.7)] group-hover:scale-110 transition-transform duration-300">
                     <svg className="w-6 h-6 text-slate-950" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>

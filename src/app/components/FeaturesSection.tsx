@@ -1,9 +1,9 @@
-import { 
-  Users, 
-  Calendar, 
-  FileText, 
-  DollarSign, 
-  MessageSquare, 
+import {
+  Users,
+  Calendar,
+  FileText,
+  DollarSign,
+  MessageSquare,
   Smartphone,
   BarChart3,
   BookOpen,
@@ -120,14 +120,14 @@ export function FeaturesSection() {
       // Cards staggered animation with scale and fade
       cardsRef.current.forEach((card, index) => {
         if (!card) return;
-        
+
         // Different animation directions based on position
         const xOffset = index % 3 === 0 ? -50 : index % 3 === 2 ? 50 : 0;
-        
+
         gsap.fromTo(
           card,
-          { 
-            opacity: 0, 
+          {
+            opacity: 0,
             y: 80,
             scale: 0.9,
             rotationX: -15
@@ -188,22 +188,22 @@ export function FeaturesSection() {
   };
 
   return (
-    <section ref={sectionRef} id="features" className="py-24 bg-slate-950 relative overflow-hidden">
+    <section ref={sectionRef} id="features" className="py-24 bg-background relative overflow-hidden">
       {/* Background decoration */}
-      <div ref={bgRef} className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle,_rgba(56,189,248,0.08),_transparent_70%)] opacity-50" />
+      <div ref={bgRef} className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle,_rgba(56,189,248,0.1),_transparent_70%)] dark:bg-[radial-gradient(circle,_rgba(56,189,248,0.08),_transparent_70%)] opacity-50 dark:opacity-40" />
       </div>
-      
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}
         <div ref={headerRef} className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-900/70 text-sky-100 text-sm font-medium mb-4 border border-cyan-300/40 shadow-[0_18px_35px_rgba(15,23,42,0.95)] backdrop-blur-md">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-secondary/50 dark:bg-secondary text-secondary-foreground text-sm font-medium mb-4 border border-primary/20 dark:border-cyan-300/40 shadow-sm backdrop-blur-md">
             Features
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-50 mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Everything Your School Needs
           </h2>
-          <p className="text-xl text-slate-300">
+          <p className="text-xl text-muted-foreground">
             A complete suite of tools to manage every aspect of your educational institution
           </p>
         </div>
@@ -214,16 +214,16 @@ export function FeaturesSection() {
             const Icon = feature.icon;
             return (
               <div ref={addToRefs} key={index}>
-                <Card 
-                  className="p-8 border border-slate-800/80 hover:border-sky-400/60 hover:shadow-[0_22px_55px_rgba(15,23,42,0.95)] transition-all duration-300 bg-slate-950/80 group rounded-2xl backdrop-blur-xl cursor-default"
+                <Card
+                  className="p-8 border border-border bg-card/50 dark:bg-slate-950/80 hover:border-primary/50 dark:hover:border-sky-400/60 transition-all duration-300 group rounded-2xl backdrop-blur-xl cursor-default shadow-sm hover:shadow-xl dark:shadow-none"
                 >
-                  <div className="w-14 h-14 bg-gradient-to-br from-sky-400 via-cyan-300 to-fuchsia-400 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-[0_16px_40px_rgba(56,189,248,0.7)] group-hover:shadow-[0_20px_50px_rgba(56,189,248,0.8)]">
-                    <Icon className="h-7 w-7 text-slate-950" />
+                  <div className="w-14 h-14 bg-gradient-to-br from-sky-400 via-cyan-300 to-fuchsia-400 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-[0_16px_40px_rgba(56,189,248,0.3)] dark:shadow-[0_16px_40px_rgba(56,189,248,0.7)] group-hover:shadow-[0_20px_50px_rgba(56,189,248,0.4)] dark:group-hover:shadow-[0_20px_50px_rgba(56,189,248,0.8)]">
+                    <Icon className="h-7 w-7 text-white dark:text-slate-950" />
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-100 mb-3 group-hover:text-sky-200 transition-colors duration-300">
+                  <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                     {feature.title}
                   </h3>
-                  <p className="text-slate-300 leading-relaxed group-hover:text-slate-200 transition-colors duration-300">
+                  <p className="text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors duration-300">
                     {feature.description}
                   </p>
                 </Card>
