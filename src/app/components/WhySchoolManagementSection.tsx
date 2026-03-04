@@ -1,11 +1,11 @@
-import { 
-  Lightbulb, 
-  Zap, 
-  Shield, 
-  Users, 
-  BarChart3, 
-  Globe, 
-  Clock, 
+import {
+  Lightbulb,
+  Zap,
+  Shield,
+  Users,
+  BarChart3,
+  Globe,
+  Clock,
   HeadphonesIcon,
   CheckCircle2,
   ArrowRight
@@ -120,26 +120,31 @@ export function WhySchoolManagementSection() {
       ref={sectionRef}
       className="py-24 relative overflow-hidden"
     >
-      {/* Background decoration */}
-      <div className="absolute inset-0">
+      {/* Background decoration — dark mode */}
+      <div className="absolute inset-0 hidden dark:block">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(15,23,42,0.96),_#020617_70%)]" />
         <div className="pointer-events-none absolute -right-20 top-10 h-72 w-72 rounded-full bg-[conic-gradient(from_200deg,_rgba(56,189,248,0.4),_rgba(236,72,153,0.5),_transparent_60%)] blur-3xl opacity-80" />
       </div>
-      
+      {/* Background decoration — light mode */}
+      <div className="absolute inset-0 dark:hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-indigo-50/50 to-white" />
+        <div className="pointer-events-none absolute -right-20 top-10 h-72 w-72 rounded-full bg-[conic-gradient(from_200deg,_rgba(99,102,241,0.2),_rgba(168,85,247,0.2),_transparent_60%)] blur-3xl opacity-60" />
+      </div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}
         <div ref={headerRef} className="text-center max-w-4xl mx-auto mb-20">
-          <div className="inline-flex items-center px-5 py-2.5 rounded-full bg-slate-900/70 border border-cyan-300/40 text-sky-100 text-sm font-medium mb-6 shadow-[0_18px_35px_rgba(15,23,42,0.95)] backdrop-blur-md">
-            <span className="w-2 h-2 rounded-full bg-gradient-to-r from-sky-400 to-fuchsia-400 mr-3 animate-pulse" />
+          <div className="inline-flex items-center px-5 py-2.5 rounded-full bg-secondary border border-primary/30 text-primary dark:text-sky-100 text-sm font-medium mb-6 shadow-md backdrop-blur-md">
+            <span className="w-2 h-2 rounded-full bg-gradient-to-r from-primary to-fuchsia-400 mr-3 animate-pulse" />
             Why modern school teams centralize operations
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            <span className="block text-slate-50">Transform every layer of</span>
-            <span className="bg-gradient-to-r from-sky-400 via-cyan-300 to-fuchsia-400 bg-clip-text text-transparent">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+            <span className="block">Transform every layer of</span>
+            <span className="bg-gradient-to-r from-primary via-cyan-400 to-fuchsia-400 bg-clip-text text-transparent">
               your educational institution
             </span>
           </h2>
-          <p className="text-lg sm:text-xl text-slate-300/90 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
             Manual spreadsheets and disconnected tools slow everything down. A unified operating system
             unlocks faster decisions, better visibility, and calmer teams.
           </p>
@@ -153,17 +158,17 @@ export function WhySchoolManagementSection() {
           {benefits.map((benefit, index) => {
             const Icon = benefit.icon;
             return (
-              <Card 
-                key={index} 
-                className="p-7 lg:p-8 border border-slate-800/80 hover:border-sky-400/60 hover:shadow-[0_22px_55px_rgba(15,23,42,0.95)] transition-all duration-500 bg-slate-950/70 backdrop-blur-xl group hover:-translate-y-2 hover:bg-slate-900/90 rounded-2xl"
+              <Card
+                key={index}
+                className="p-7 lg:p-8 border border-border hover:border-primary/40 dark:hover:border-sky-400/60 hover:shadow-xl dark:hover:shadow-[0_22px_55px_rgba(15,23,42,0.95)] transition-all duration-500 bg-card/80 dark:bg-slate-950/70 backdrop-blur-xl group hover:-translate-y-2 rounded-2xl"
               >
-                <div className="w-14 h-14 bg-gradient-to-br from-sky-400 via-cyan-300 to-fuchsia-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:-rotate-2 transition-all duration-500 shadow-[0_16px_40px_rgba(56,189,248,0.7)]">
-                  <Icon className="h-7 w-7 text-slate-950" />
+                <div className="w-14 h-14 bg-gradient-to-br from-primary via-cyan-400 to-fuchsia-400 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:-rotate-2 transition-all duration-500 shadow-lg dark:shadow-[0_16px_40px_rgba(56,189,248,0.7)]">
+                  <Icon className="h-7 w-7 text-white dark:text-slate-950" />
                 </div>
-                <h3 className="text-xl font-semibold text-slate-50 mb-4 group-hover:text-sky-200 transition-colors duration-300">
+                <h3 className="text-xl font-semibold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
                   {benefit.title}
                 </h3>
-                <p className="text-slate-300 leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed">
                   {benefit.description}
                 </p>
               </Card>

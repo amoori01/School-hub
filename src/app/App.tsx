@@ -28,7 +28,7 @@ export default function App() {
     } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.add("dark"); // Default to dark
+      // Default to light mode for first-time visitors
     }
   }, []);
 

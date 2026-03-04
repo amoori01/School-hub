@@ -37,29 +37,6 @@ const contactInfo = [
   }
 ];
 
-const offices = [
-  {
-    city: "New York",
-    address: "123 Education Street, NY 10001",
-    phone: "+1 (555) 123-4567"
-  },
-  {
-    city: "London",
-    address: "456 Learning Ave, London EC1A 1BB",
-    phone: "+44 20 7123 4567"
-  },
-  {
-    city: "Singapore",
-    address: "789 Knowledge Rd, Singapore 018956",
-    phone: "+65 6123 4567"
-  },
-  {
-    city: "Dubai",
-    address: "321 Innovation Blvd, Dubai 12345",
-    phone: "+971 4 123 4567"
-  }
-];
-
 export function ContactPage() {
   const pageRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
@@ -82,7 +59,6 @@ export function ContactPage() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero background parallax
       if (heroBgRef.current) {
         gsap.to(heroBgRef.current, {
           y: -50,
@@ -96,7 +72,6 @@ export function ContactPage() {
         });
       }
 
-      // Header with clip-path reveal (like PricingSection)
       gsap.set(headerRef.current, { clipPath: "inset(0 100% 0 0)", opacity: 0 });
       gsap.to(headerRef.current, {
         clipPath: "inset(0 0% 0 0)",
@@ -109,7 +84,6 @@ export function ContactPage() {
         }
       });
 
-      // Contact info cards - stagger animation with 3D effect
       const contactCards = contactCardsRef.current?.children;
       if (contactCards) {
         gsap.set(contactCards, { opacity: 0, y: 40, scale: 0.9, rotationX: -15 });
@@ -125,7 +99,6 @@ export function ContactPage() {
         });
       }
 
-      // Form section with slide reveal
       const formElements = formRef.current?.children;
       if (formElements) {
         gsap.set(formElements, { opacity: 0, x: -50 });
@@ -139,7 +112,6 @@ export function ContactPage() {
         });
       }
 
-      // Map/office section with slide reveal
       const mapElements = mapRef.current?.children;
       if (mapElements) {
         gsap.set(mapElements, { opacity: 0, x: 50 });
@@ -152,20 +124,6 @@ export function ContactPage() {
           scrollTrigger: { trigger: mapRef.current, start: "top 80%" }
         });
       }
-
-      // FAQ section with accordion-style reveal
-      const faqItems = faqRef.current?.children;
-      if (faqItems) {
-        gsap.set(faqItems, { opacity: 0, y: 20 });
-        gsap.to(faqItems, {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          stagger: 0.1,
-          ease: "power2.out",
-          scrollTrigger: { trigger: faqRef.current, start: "top 85%" }
-        });
-      }
     }, pageRef);
 
     return () => ctx.revert();
@@ -173,7 +131,6 @@ export function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
     console.log("Form submitted:", formData);
     alert("Thank you for contacting us! We'll get back to you soon.");
   };
@@ -186,27 +143,28 @@ export function ContactPage() {
   };
 
   return (
-    <div ref={pageRef} className="bg-slate-950">
+    <div ref={pageRef} className="bg-background">
       {/* Hero Section */}
-      <section className="relative py-24 bg-[radial-gradient(circle_at_top,_#0b1120,_#020617_70%)] overflow-hidden">
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 hidden dark:block bg-[radial-gradient(circle_at_top,_#0b1120,_#020617_70%)]" />
+        <div className="absolute inset-0 dark:hidden bg-gradient-to-br from-indigo-50 via-white to-purple-50" />
         <div ref={heroBgRef} className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-[conic-gradient(from_200deg,_rgba(56,189,248,0.3),_rgba(236,72,153,0.3),_transparent)] blur-3xl opacity-50" />
-          <div className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-[radial-gradient(circle,_rgba(236,72,153,0.2),_transparent_70%)] blur-3xl opacity-40" />
+          <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-[conic-gradient(from_200deg,_rgba(99,102,241,0.2),_rgba(168,85,247,0.2),_transparent)] dark:bg-[conic-gradient(from_200deg,_rgba(56,189,248,0.3),_rgba(236,72,153,0.3),_transparent)] blur-3xl opacity-50" />
+          <div className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-[radial-gradient(circle,_rgba(168,85,247,0.15),_transparent_70%)] dark:bg-[radial-gradient(circle,_rgba(236,72,153,0.2),_transparent_70%)] blur-3xl opacity-40" />
         </div>
         <div ref={heroRef} className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div ref={headerRef} className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-900/70 text-sky-100 text-sm font-medium mb-6 border border-cyan-300/40 shadow-[0_18px_35px_rgba(15,23,42,0.95)] backdrop-blur-md">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-secondary border border-primary/30 text-primary dark:text-sky-100 text-sm font-medium mb-6 shadow-md backdrop-blur-md">
               Contact Us
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-50 mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
               Get in
-              <span className="bg-gradient-to-r from-sky-400 via-cyan-300 to-fuchsia-400 bg-clip-text text-transparent">
-                {" "}
-                Touch{" "}
+              <span className="bg-gradient-to-r from-primary via-cyan-400 to-fuchsia-400 bg-clip-text text-transparent">
+                {" "}Touch{" "}
               </span>
             </h1>
-            <p className="text-xl text-slate-300 leading-relaxed">
-              Have questions? We'd love to hear from you. Send us a message 
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Have questions? We'd love to hear from you. Send us a message
               and we'll respond as soon as possible.
             </p>
           </div>
@@ -220,21 +178,21 @@ export function ContactPage() {
             {contactInfo.map((info, index) => {
               const Icon = info.icon;
               return (
-                <Card key={index} className="p-6 border border-slate-800/80 hover:shadow-[0_18px_35px_rgba(15,23,42,0.95)] hover:border-sky-400/60 transition-all duration-300 bg-slate-950/80 rounded-2xl backdrop-blur-xl group cursor-default">
-                  <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-sky-400 via-cyan-300 to-fuchsia-400 flex items-center justify-center mb-4 shadow-[0_16px_40px_rgba(56,189,248,0.7)] group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="h-6 w-6 text-slate-950" />
+                <Card key={index} className="p-6 border border-border hover:shadow-xl dark:hover:shadow-[0_18px_35px_rgba(15,23,42,0.95)] hover:border-primary/40 dark:hover:border-sky-400/60 transition-all duration-300 bg-card/80 dark:bg-slate-950/80 rounded-2xl backdrop-blur-xl group cursor-default">
+                  <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-primary via-cyan-400 to-fuchsia-400 flex items-center justify-center mb-4 shadow-lg dark:shadow-[0_16px_40px_rgba(56,189,248,0.7)] group-hover:scale-110 transition-transform duration-300">
+                    <Icon className="h-6 w-6 text-white dark:text-slate-950" />
                   </div>
-                  <h3 className="font-semibold text-slate-100 mb-2 group-hover:text-sky-200 transition-colors duration-300">
+                  <h3 className="font-semibold text-foreground mb-2 group-hover:text-primary dark:group-hover:text-sky-200 transition-colors duration-300">
                     {info.title}
                   </h3>
                   <div className="space-y-1 mb-2">
                     {info.details.map((detail, detailIndex) => (
-                      <p key={detailIndex} className="text-slate-300">
+                      <p key={detailIndex} className="text-muted-foreground">
                         {detail}
                       </p>
                     ))}
                   </div>
-                  <p className="text-sm text-slate-400 group-hover:text-slate-200 transition-colors duration-300">
+                  <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
                     {info.description}
                   </p>
                 </Card>
@@ -244,16 +202,16 @@ export function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Form & Map */}
-      <section className="py-20 bg-slate-950">
+      {/* Contact Form & FAQ */}
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
             {/* Contact Form */}
             <div ref={formRef}>
-              <h2 className="text-3xl font-bold text-slate-50 mb-6">
+              <h2 className="text-3xl font-bold text-foreground mb-6">
                 Send us a Message
               </h2>
-              <p className="text-slate-300 mb-8">
+              <p className="text-muted-foreground mb-8">
                 Fill out the form below and our team will get back to you within 24 hours.
               </p>
 
@@ -267,7 +225,7 @@ export function ContactPage() {
                       value={formData.firstName}
                       onChange={handleChange}
                       required
-                      className="mt-1 bg-slate-900/80 border-slate-700/80 focus:border-sky-400/60"
+                      className="mt-1 bg-secondary dark:bg-slate-900/80 border-border focus:border-primary dark:focus:border-sky-400/60"
                     />
                   </div>
                   <div>
@@ -278,7 +236,7 @@ export function ContactPage() {
                       value={formData.lastName}
                       onChange={handleChange}
                       required
-                      className="mt-1 bg-slate-900/80 border-slate-700/80 focus:border-sky-400/60"
+                      className="mt-1 bg-secondary dark:bg-slate-900/80 border-border focus:border-primary dark:focus:border-sky-400/60"
                     />
                   </div>
                 </div>
@@ -292,7 +250,7 @@ export function ContactPage() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="mt-1 bg-slate-900/80 border-slate-700/80 focus:border-sky-400/60"
+                    className="mt-1 bg-secondary dark:bg-slate-900/80 border-border focus:border-primary dark:focus:border-sky-400/60"
                   />
                 </div>
 
@@ -304,7 +262,7 @@ export function ContactPage() {
                     type="tel"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="mt-1 bg-slate-900/80 border-slate-700/80 focus:border-sky-400/60"
+                    className="mt-1 bg-secondary dark:bg-slate-900/80 border-border focus:border-primary dark:focus:border-sky-400/60"
                   />
                 </div>
 
@@ -315,7 +273,7 @@ export function ContactPage() {
                     name="institution"
                     value={formData.institution}
                     onChange={handleChange}
-                    className="mt-1 bg-slate-900/80 border-slate-700/80 focus:border-sky-400/60"
+                    className="mt-1 bg-secondary dark:bg-slate-900/80 border-border focus:border-primary dark:focus:border-sky-400/60"
                   />
                 </div>
 
@@ -327,7 +285,7 @@ export function ContactPage() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="mt-1 bg-slate-900/80 border-slate-700/80 focus:border-sky-400/60"
+                    className="mt-1 bg-secondary dark:bg-slate-900/80 border-border focus:border-primary dark:focus:border-sky-400/60"
                   />
                 </div>
 
@@ -340,7 +298,7 @@ export function ContactPage() {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="mt-1 bg-slate-900/80 border-slate-700/80 focus:border-sky-400/60"
+                    className="mt-1 bg-secondary dark:bg-slate-900/80 border-border focus:border-primary dark:focus:border-sky-400/60"
                   />
                 </div>
 
@@ -355,44 +313,44 @@ export function ContactPage() {
               </form>
             </div>
 
-            {/* Map Placeholder & Additional Info */}
+            {/* FAQ Cards */}
             <div ref={mapRef} className="space-y-8">
-              <Card className="p-6 border border-slate-800/80 bg-slate-950/80 rounded-2xl backdrop-blur-xl">
-                <h3 className="font-semibold text-slate-100 mb-2">
+              <Card className="p-6 border border-border bg-card/80 dark:bg-slate-950/80 rounded-2xl backdrop-blur-xl">
+                <h3 className="font-semibold text-foreground mb-2">
                   How long does it take to implement EduManage?
                 </h3>
-                <p className="text-slate-300">
-                  Most institutions can go live within 2-4 weeks. We provide comprehensive 
+                <p className="text-muted-foreground">
+                  Most institutions can go live within 2-4 weeks. We provide comprehensive
                   onboarding and training to ensure a smooth transition.
                 </p>
               </Card>
 
-              <Card className="p-6 border border-slate-800/80 bg-slate-950/80 rounded-2xl backdrop-blur-xl">
-                <h3 className="font-semibold text-slate-100 mb-2">
+              <Card className="p-6 border border-border bg-card/80 dark:bg-slate-950/80 rounded-2xl backdrop-blur-xl">
+                <h3 className="font-semibold text-foreground mb-2">
                   Do you offer training for staff?
                 </h3>
-                <p className="text-slate-300">
-                  Yes! We provide extensive training programs including video tutorials, 
+                <p className="text-muted-foreground">
+                  Yes! We provide extensive training programs including video tutorials,
                   documentation, and live training sessions for your team.
                 </p>
               </Card>
 
-              <Card className="p-6 border border-slate-800/80 bg-slate-950/80 rounded-2xl backdrop-blur-xl">
-                <h3 className="font-semibold text-slate-100 mb-2">
+              <Card className="p-6 border border-border bg-card/80 dark:bg-slate-950/80 rounded-2xl backdrop-blur-xl">
+                <h3 className="font-semibold text-foreground mb-2">
                   Can I migrate data from my current system?
                 </h3>
-                <p className="text-slate-300">
-                  Absolutely. Our team assists with data migration to ensure all your 
+                <p className="text-muted-foreground">
+                  Absolutely. Our team assists with data migration to ensure all your
                   existing information is transferred securely and accurately.
                 </p>
               </Card>
 
-              <Card className="p-6 border border-slate-800/80 bg-slate-950/80 rounded-2xl backdrop-blur-xl">
-                <h3 className="font-semibold text-slate-100 mb-2">
+              <Card className="p-6 border border-border bg-card/80 dark:bg-slate-950/80 rounded-2xl backdrop-blur-xl">
+                <h3 className="font-semibold text-foreground mb-2">
                   What kind of support do you provide?
                 </h3>
-                <p className="text-slate-300">
-                  We offer 24/7 support via email, phone, and chat. Enterprise customers 
+                <p className="text-muted-foreground">
+                  We offer 24/7 support via email, phone, and chat. Enterprise customers
                   get a dedicated account manager and priority support.
                 </p>
               </Card>
