@@ -141,17 +141,6 @@ export function CTASection() {
           start: "top 95%"
         }
       });
-
-      // Pin section effect - creates a sticky scroll feel for the CTA
-      gsap.to(sectionRef.current, {
-        backgroundColor: "rgba(2, 6, 23, 0.95)",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 90%",
-          end: "top 50%",
-          scrub: 1
-        }
-      });
     }, sectionRef);
 
     return () => {
@@ -164,11 +153,17 @@ export function CTASection() {
       ref={sectionRef}
       className="py-24 relative overflow-hidden"
     >
-      {/* Background decorations */}
-      <div ref={gradientRef} className="absolute inset-0">
+      {/* Background decorations — dark mode */}
+      <div ref={gradientRef} className="absolute inset-0 hidden dark:block">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#0b1120,_#020617_70%)]" />
         <div className="pointer-events-none absolute -top-24 left-1/3 h-80 w-80 rounded-full bg-[conic-gradient(from_200deg,_rgba(56,189,248,0.5),_rgba(236,72,153,0.5),_transparent_60%)] blur-3xl opacity-80" />
         <div className="pointer-events-none absolute -bottom-28 right-1/4 h-80 w-80 rounded-full bg-[radial-gradient(circle,_rgba(56,189,248,0.3),_transparent_65%)] blur-3xl opacity-80" />
+      </div>
+      {/* Background decorations — light mode */}
+      <div className="absolute inset-0 dark:hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-purple-50" />
+        <div className="pointer-events-none absolute -top-24 left-1/3 h-80 w-80 rounded-full bg-[conic-gradient(from_200deg,_rgba(99,102,241,0.25),_rgba(168,85,247,0.25),_transparent_60%)] blur-3xl opacity-60" />
+        <div className="pointer-events-none absolute -bottom-28 right-1/4 h-80 w-80 rounded-full bg-[radial-gradient(circle,_rgba(99,102,241,0.15),_transparent_65%)] blur-3xl opacity-60" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -176,7 +171,7 @@ export function CTASection() {
           {/* Badge */}
           <div
             ref={badgeRef}
-            className="inline-flex items-center px-5 py-2.5 rounded-full bg-slate-900/70 backdrop-blur-md text-sky-100 text-sm font-medium mb-8 border border-cyan-300/40 shadow-[0_18px_35px_rgba(15,23,42,0.95)] cursor-default hover:scale-105 transition-transform duration-300"
+            className="inline-flex items-center px-5 py-2.5 rounded-full bg-secondary backdrop-blur-md text-primary dark:text-sky-100 text-sm font-medium mb-8 border border-primary/30 shadow-md cursor-default hover:scale-105 transition-transform duration-300"
           >
             <span className="w-2 h-2 bg-emerald-400 rounded-full mr-3 animate-pulse" />
             Join 5,000+ forward‑thinking institutions
@@ -185,15 +180,15 @@ export function CTASection() {
           {/* Heading */}
           <h2
             ref={headingRef}
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-50 mb-8 leading-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground mb-8 leading-tight"
           >
             Ready to upgrade your school's operating system?
           </h2>
 
           {/* Supporting text */}
-          <p 
+          <p
             ref={subtextRef}
-            className="text-lg sm:text-xl text-slate-300 mb-10 leading-relaxed max-w-2xl mx-auto"
+            className="text-lg sm:text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto"
           >
             Start with a guided demo tailored to your workflows, then roll out at your own
             pace with white‑glove onboarding and migration support.
@@ -204,18 +199,18 @@ export function CTASection() {
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="flex items-center text-slate-100 bg-slate-900/70 backdrop-blur-md px-6 py-3 rounded-full border border-slate-700/80 hover:border-sky-300/60 hover:bg-slate-800/80 transition-all duration-300 cursor-default group"
+                className="flex items-center text-foreground bg-secondary backdrop-blur-md px-6 py-3 rounded-full border border-border hover:border-primary/40 dark:hover:border-sky-300/60 transition-all duration-300 cursor-default group"
               >
-                <CheckCircle2 className="h-5 w-5 mr-3 text-emerald-400 group-hover:scale-110 transition-transform duration-300" />
-                <span className="font-medium group-hover:text-sky-100 transition-colors duration-300">{benefit}</span>
+                <CheckCircle2 className="h-5 w-5 mr-3 text-emerald-500 dark:text-emerald-400 group-hover:scale-110 transition-transform duration-300" />
+                <span className="font-medium group-hover:text-primary dark:group-hover:text-sky-100 transition-colors duration-300">{benefit}</span>
               </div>
             ))}
           </div>
 
           {/* CTA buttons */}
           <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-[#e35336] dark:bg-[#f47236] text-white hover:bg-[#c4452b] dark:hover:bg-[#e35336] text-lg px-12 py-8 font-bold rounded-2xl transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 border border-[#e35336]/70 group"
             >
               <span className="flex items-center">
@@ -223,33 +218,33 @@ export function CTASection() {
                 <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform duration-300" />
               </span>
             </Button>
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               variant="outline"
-              className="border-2 border-slate-700 text-slate-100 hover:bg-slate-900/70 text-lg px-12 py-8 font-bold rounded-2xl backdrop-blur-md transition-all duration-300 hover:border-sky-300/70 hover:scale-[1.02] active:scale-[0.98]"
+              className="border-2 border-border text-foreground hover:bg-secondary text-lg px-12 py-8 font-bold rounded-2xl backdrop-blur-md transition-all duration-300 hover:border-primary/50 dark:hover:border-sky-300/70 hover:scale-[1.02] active:scale-[0.98]"
             >
               Schedule a Call
             </Button>
           </div>
 
           {/* Trust indicator */}
-          <div ref={trustRef} className="mt-16 pt-10 border-t border-white/20">
-            <p className="text-slate-300 text-sm mb-6">
+          <div ref={trustRef} className="mt-16 pt-10 border-t border-border">
+            <p className="text-muted-foreground text-sm mb-6">
               Trusted by high‑growth schools, universities, and training providers worldwide
             </p>
             <div className="flex justify-center items-center gap-12 flex-wrap">
               <div className="flex items-center">
                 <div className="flex -space-x-3">
                   {[1, 2, 3, 4, 5].map((i) => (
-                    <div 
-                      key={i} 
-                      className="w-11 h-11 rounded-full bg-gradient-to-br from-sky-400 via-cyan-300 to-fuchsia-400 border-2 border-slate-950 flex items-center justify-center text-slate-950 text-sm font-bold shadow-[0_14px_35px_rgba(56,189,248,0.7)] hover:scale-110 hover:z-10 transition-transform duration-300 cursor-pointer"
+                    <div
+                      key={i}
+                      className="w-11 h-11 rounded-full bg-gradient-to-br from-primary via-cyan-400 to-fuchsia-400 border-2 border-background flex items-center justify-center text-white dark:text-slate-950 text-sm font-bold shadow-lg dark:shadow-[0_14px_35px_rgba(56,189,248,0.7)] hover:scale-110 hover:z-10 transition-transform duration-300 cursor-pointer"
                     >
                       {i}
                     </div>
                   ))}
                 </div>
-                <span className="ml-6 text-slate-100 font-semibold text-lg">
+                <span className="ml-6 text-foreground font-semibold text-lg">
                   5,000+ institutions onboarded globally
                 </span>
               </div>

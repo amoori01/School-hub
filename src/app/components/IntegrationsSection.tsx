@@ -1,9 +1,9 @@
-import { 
-  Zap, 
-  BookOpen, 
-  CreditCard, 
-  Mail, 
-  MessageSquare, 
+import {
+  Zap,
+  BookOpen,
+  CreditCard,
+  Mail,
+  MessageSquare,
   Cloud,
   Smartphone,
   FileSpreadsheet,
@@ -91,18 +91,18 @@ const integrations = [
 
 export function IntegrationsSection() {
   return (
-    <section id="integrations" className="py-24 bg-slate-950">
+    <section id="integrations" className="py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-900/70 text-sky-100 text-sm font-medium mb-4 border border-cyan-300/40 shadow-[0_18px_35px_rgba(15,23,42,0.95)] backdrop-blur-md">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-secondary border border-primary/30 text-primary dark:text-sky-100 text-sm font-medium mb-4 shadow-md backdrop-blur-md">
             Various Integration Options
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-50 mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Enhance Your School Management Experience
           </h2>
-          <p className="text-xl text-slate-300 leading-relaxed">
-            Connect with 50+ popular tools and services to create a seamless ecosystem 
+          <p className="text-xl text-muted-foreground leading-relaxed">
+            Connect with 50+ popular tools and services to create a seamless ecosystem
             that works for your entire institution
           </p>
         </div>
@@ -112,26 +112,26 @@ export function IntegrationsSection() {
           {integrations.map((integration, index) => {
             const Icon = integration.icon;
             return (
-              <Card 
-                key={index} 
-                className="p-6 border border-slate-800/80 hover:border-sky-400/60 hover:shadow-[0_22px_55px_rgba(15,23,42,0.95)] transition-all duration-300 bg-slate-950/80 group rounded-2xl backdrop-blur-xl"
+              <Card
+                key={index}
+                className="p-6 border border-border hover:border-primary/40 dark:hover:border-sky-400/60 hover:shadow-xl dark:hover:shadow-[0_22px_55px_rgba(15,23,42,0.95)] transition-all duration-300 bg-card/80 dark:bg-slate-950/80 group rounded-2xl backdrop-blur-xl"
               >
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-sky-400 via-cyan-300 to-fuchsia-400 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-[0_16px_40px_rgba(56,189,248,0.7)]">
-                    <Icon className="h-6 w-6 text-slate-950" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary via-cyan-400 to-fuchsia-400 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-lg dark:shadow-[0_16px_40px_rgba(56,189,248,0.7)]">
+                    <Icon className="h-6 w-6 text-white dark:text-slate-950" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-slate-100 mb-2">
+                    <h3 className="text-lg font-semibold text-foreground mb-2">
                       {integration.title}
                     </h3>
-                    <p className="text-slate-300 text-sm mb-3 leading-relaxed">
+                    <p className="text-muted-foreground text-sm mb-3 leading-relaxed">
                       {integration.description}
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {integration.examples.map((example, eIndex) => (
-                        <span 
-                          key={eIndex} 
-                          className="text-xs bg-slate-900/70 text-sky-200 px-2 py-1 rounded-full border border-slate-700/80"
+                        <span
+                          key={eIndex}
+                          className="text-xs bg-secondary dark:bg-slate-900/70 text-primary dark:text-sky-200 px-2 py-1 rounded-full border border-border"
                         >
                           {example}
                         </span>
@@ -146,12 +146,12 @@ export function IntegrationsSection() {
 
         {/* CTA */}
         <div className="text-center mt-12">
-          <p className="text-slate-300 mb-4">
+          <p className="text-muted-foreground mb-4">
             Don't see what you're looking for? We offer custom integrations.
           </p>
-          <a 
-            href="#contact" 
-            className="inline-flex items-center text-sky-300 font-medium hover:text-sky-200"
+          <a
+            href="#contact"
+            className="inline-flex items-center text-primary dark:text-sky-300 font-medium hover:text-primary/80 dark:hover:text-sky-200"
           >
             Talk to our integration specialists
             <Zap className="ml-2 h-4 w-4" />

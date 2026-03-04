@@ -1,4 +1,4 @@
-import { 
+import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -113,22 +113,22 @@ export function FAQsSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="faqs" className="py-24 bg-slate-950 relative overflow-hidden">
+    <section ref={sectionRef} id="faqs" className="py-24 bg-background relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle,_rgba(56,189,248,0.06),_transparent_70%)] opacity-40" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[radial-gradient(circle,_rgba(99,102,241,0.06),_transparent_70%)] dark:bg-[radial-gradient(circle,_rgba(56,189,248,0.06),_transparent_70%)] opacity-40" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section header */}
         <div ref={headerRef} className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-slate-900/70 text-sky-100 border border-cyan-300/40 text-sm font-medium mb-4 shadow-[0_18px_35px_rgba(15,23,42,0.95)] backdrop-blur-md">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-secondary border border-primary/30 text-primary dark:text-sky-100 text-sm font-medium mb-4 shadow-md backdrop-blur-md">
             FAQs on School Management Software
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-50 mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-xl text-slate-300 leading-relaxed">
+          <p className="text-xl text-muted-foreground leading-relaxed">
             Get answers to common questions about our school management solution
           </p>
         </div>
@@ -137,18 +137,18 @@ export function FAQsSection() {
         <div ref={faqsRef} className="max-w-3xl mx-auto">
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
-              <AccordionItem 
-                key={index} 
+              <AccordionItem
+                key={index}
                 value={`item-${index}`}
-                className="bg-slate-950/80 rounded-lg border border-slate-800/80 px-6 data-[state=open]:border-sky-400/60 backdrop-blur-xl hover:border-sky-300/40 transition-colors duration-300 cursor-default"
+                className="bg-card/80 dark:bg-slate-950/80 rounded-lg border border-border px-6 data-[state=open]:border-primary/50 dark:data-[state=open]:border-sky-400/60 backdrop-blur-xl hover:border-primary/30 dark:hover:border-sky-300/40 transition-colors duration-300 cursor-default"
               >
-                <AccordionTrigger className="text-left text-lg font-medium text-slate-100 hover:text-sky-200 hover:no-underline py-6">
+                <AccordionTrigger className="text-left text-lg font-medium text-foreground hover:text-primary dark:hover:text-sky-200 hover:no-underline py-6">
                   <div className="flex items-center gap-3">
-                    <HelpCircle className="h-5 w-5 text-sky-300 flex-shrink-0" />
+                    <HelpCircle className="h-5 w-5 text-primary dark:text-sky-300 flex-shrink-0" />
                     {faq.question}
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="text-slate-300 leading-relaxed pb-6">
+                <AccordionContent className="text-muted-foreground leading-relaxed pb-6">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -158,12 +158,12 @@ export function FAQsSection() {
 
         {/* Contact CTA */}
         <div ref={contactRef} className="text-center mt-12">
-          <p className="text-slate-300 mb-4">
+          <p className="text-muted-foreground mb-4">
             Still have questions? We're here to help.
           </p>
-          <a 
-            href="#contact" 
-            className="inline-flex items-center text-sky-300 font-medium hover:text-sky-200 hover:underline transition-all duration-300"
+          <a
+            href="#contact"
+            className="inline-flex items-center text-primary dark:text-sky-300 font-medium hover:text-primary/80 dark:hover:text-sky-200 hover:underline transition-all duration-300"
           >
             Contact our support team
           </a>

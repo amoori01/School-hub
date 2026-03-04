@@ -177,16 +177,18 @@ export function DemoRequestPage() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[radial-gradient(circle_at_top,_#020617,_#020617_70%)] px-4 py-12">
-        <div className="max-w-md w-full text-center">
-          <div className="bg-slate-950/90 rounded-2xl shadow-[0_22px_55px_rgba(15,23,42,0.95)] border border-slate-800/80 p-10 backdrop-blur-xl">
+      <div className="min-h-screen flex items-center justify-center px-4 py-12 relative">
+        <div className="absolute inset-0 hidden dark:block bg-[radial-gradient(circle_at_top,_#020617,_#020617_70%)]" />
+        <div className="absolute inset-0 dark:hidden bg-gradient-to-br from-indigo-50 via-white to-purple-50" />
+        <div className="max-w-md w-full text-center relative z-10">
+          <div className="bg-card/90 rounded-2xl shadow-xl dark:shadow-[0_22px_55px_rgba(15,23,42,0.95)] border border-border p-10 backdrop-blur-xl">
             <div className="w-16 h-16 bg-emerald-500/15 rounded-full flex items-center justify-center mx-auto mb-6 border border-emerald-400/50">
               <CheckCircle2 className="w-8 h-8 text-emerald-400" />
             </div>
-            <h2 className="text-2xl font-semibold text-slate-50 mb-3">
+            <h2 className="text-2xl font-semibold text-foreground mb-3">
               Demo Request Submitted!
             </h2>
-            <p className="text-slate-300 mb-6">
+            <p className="text-muted-foreground mb-6">
               Thank you for your interest in EduManage. Our team will contact you within 24 hours to schedule your personalized demo.
             </p>
             <Link to="/">
@@ -201,15 +203,17 @@ export function DemoRequestPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_#020617,_#020617_70%)]">
+    <div className="min-h-screen relative">
+      <div className="absolute inset-0 hidden dark:block bg-[radial-gradient(circle_at_top,_#020617,_#020617_70%)]" />
+      <div className="absolute inset-0 dark:hidden bg-gradient-to-br from-indigo-50 via-white to-purple-50" />
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-[radial-gradient(circle,_rgba(56,189,248,0.35),_transparent_60%)] rounded-full opacity-70 blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-[conic-gradient(from_200deg,_rgba(56,189,248,0.45),_rgba(236,72,153,0.5),_transparent_60%)] rounded-full opacity-70 blur-3xl" />
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-[radial-gradient(circle,_rgba(99,102,241,0.2),_transparent_60%)] dark:bg-[radial-gradient(circle,_rgba(56,189,248,0.35),_transparent_60%)] rounded-full opacity-70 blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-[conic-gradient(from_200deg,_rgba(99,102,241,0.25),_rgba(168,85,247,0.25),_transparent_60%)] dark:bg-[conic-gradient(from_200deg,_rgba(56,189,248,0.45),_rgba(236,72,153,0.5),_transparent_60%)] rounded-full opacity-70 blur-3xl" />
       </div>
 
       <div className="relative min-h-screen flex">
-        {/* Left Side - Value Proposition */}
+        {/* Left Side - Value Proposition (always dark panel) */}
         <div className="hidden lg:flex lg:w-1/2 xl:w-[55%] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-50 p-12 xl:p-16 flex-col justify-between border-r border-slate-800/80">
           <div>
             {/* Logo */}
@@ -279,7 +283,7 @@ export function DemoRequestPage() {
                 <div className="flex items-center justify-center w-12 h-12 bg-[#e35336] dark:bg-[#f47236] rounded-2xl group-hover:scale-105 transition-all">
                   <GraduationCap className="w-7 h-7 text-slate-950" />
                 </div>
-                <span className="text-xl font-semibold text-slate-50 tracking-tight">
+                <span className="text-xl font-semibold text-foreground tracking-tight">
                   EduManage
                 </span>
               </Link>
@@ -287,20 +291,20 @@ export function DemoRequestPage() {
 
             {/* Form Header */}
             <div className="mb-8">
-              <h2 className="text-2xl sm:text-3xl font-semibold text-slate-50 mb-2">
+              <h2 className="text-2xl sm:text-3xl font-semibold text-foreground mb-2">
                 Schedule Your Free Demo
               </h2>
-              <p className="text-slate-300">
+              <p className="text-muted-foreground">
                 Fill out the form below and our team will reach out to schedule your personalized demo.
               </p>
             </div>
 
             {/* Form Card */}
-            <div className="bg-slate-950/90 rounded-2xl shadow-[0_22px_55px_rgba(15,23,42,0.95)] border border-slate-800/80 p-6 sm:p-8 backdrop-blur-xl">
+            <div className="bg-card/90 rounded-2xl shadow-xl dark:shadow-[0_22px_55px_rgba(15,23,42,0.95)] border border-border p-6 sm:p-8 backdrop-blur-xl">
               <form onSubmit={handleSubmit} className="space-y-5" noValidate>
                 {/* Full Name */}
                 <div className="space-y-2">
-                  <Label htmlFor="fullName" className="text-sm font-medium text-slate-200">
+                  <Label htmlFor="fullName" className="text-sm font-medium text-foreground">
                     Full Name <span className="text-red-500">*</span>
                   </Label>
                   <Input
@@ -310,9 +314,8 @@ export function DemoRequestPage() {
                     value={formData.fullName}
                     onChange={(e) => handleInputChange("fullName", e.target.value)}
                     onBlur={() => handleBlur("fullName")}
-                    className={`h-11 bg-slate-900/60 border-slate-800 hover:bg-slate-900 transition-colors text-slate-100 placeholder:text-slate-500 ${
-                      errors.fullName ? "border-red-300 focus-visible:ring-red-500/20 focus-visible:border-red-500" : ""
-                    }`}
+                    className={`h-11 bg-secondary dark:bg-slate-900/60 border-border hover:bg-muted dark:hover:bg-slate-900 transition-colors text-foreground placeholder:text-muted-foreground ${errors.fullName ? "border-red-300 focus-visible:ring-red-500/20 focus-visible:border-red-500" : ""
+                      }`}
                     aria-invalid={!!errors.fullName}
                     aria-describedby={errors.fullName ? "fullName-error" : undefined}
                     disabled={isLoading}
@@ -326,7 +329,7 @@ export function DemoRequestPage() {
 
                 {/* Work Email */}
                 <div className="space-y-2">
-                  <Label htmlFor="workEmail" className="text-sm font-medium text-slate-200">
+                  <Label htmlFor="workEmail" className="text-sm font-medium text-foreground">
                     Work Email <span className="text-red-500">*</span>
                   </Label>
                   <Input
@@ -336,9 +339,8 @@ export function DemoRequestPage() {
                     value={formData.workEmail}
                     onChange={(e) => handleInputChange("workEmail", e.target.value)}
                     onBlur={() => handleBlur("workEmail")}
-                    className={`h-11 bg-slate-900/60 border-slate-800 hover:bg-slate-900 transition-colors text-slate-100 placeholder:text-slate-500 ${
-                      errors.workEmail ? "border-red-300 focus-visible:ring-red-500/20 focus-visible:border-red-500" : ""
-                    }`}
+                    className={`h-11 bg-secondary dark:bg-slate-900/60 border-border hover:bg-muted dark:hover:bg-slate-900 transition-colors text-foreground placeholder:text-muted-foreground ${errors.workEmail ? "border-red-300 focus-visible:ring-red-500/20 focus-visible:border-red-500" : ""
+                      }`}
                     aria-invalid={!!errors.workEmail}
                     aria-describedby={errors.workEmail ? "workEmail-error" : undefined}
                     disabled={isLoading}
@@ -352,7 +354,7 @@ export function DemoRequestPage() {
 
                 {/* Phone Number */}
                 <div className="space-y-2">
-                  <Label htmlFor="phoneNumber" className="text-sm font-medium text-slate-200">
+                  <Label htmlFor="phoneNumber" className="text-sm font-medium text-foreground">
                     Phone Number <span className="text-red-500">*</span>
                   </Label>
                   <Input
@@ -362,9 +364,8 @@ export function DemoRequestPage() {
                     value={formData.phoneNumber}
                     onChange={(e) => handleInputChange("phoneNumber", e.target.value)}
                     onBlur={() => handleBlur("phoneNumber")}
-                    className={`h-11 bg-slate-900/60 border-slate-800 hover:bg-slate-900 transition-colors text-slate-100 placeholder:text-slate-500 ${
-                      errors.phoneNumber ? "border-red-300 focus-visible:ring-red-500/20 focus-visible:border-red-500" : ""
-                    }`}
+                    className={`h-11 bg-secondary dark:bg-slate-900/60 border-border hover:bg-muted dark:hover:bg-slate-900 transition-colors text-foreground placeholder:text-muted-foreground ${errors.phoneNumber ? "border-red-300 focus-visible:ring-red-500/20 focus-visible:border-red-500" : ""
+                      }`}
                     aria-invalid={!!errors.phoneNumber}
                     aria-describedby={errors.phoneNumber ? "phoneNumber-error" : undefined}
                     disabled={isLoading}
@@ -378,7 +379,7 @@ export function DemoRequestPage() {
 
                 {/* School / Institution Name */}
                 <div className="space-y-2">
-                  <Label htmlFor="schoolName" className="text-sm font-medium text-slate-200">
+                  <Label htmlFor="schoolName" className="text-sm font-medium text-foreground">
                     School / Institution Name <span className="text-red-500">*</span>
                   </Label>
                   <Input
@@ -388,9 +389,8 @@ export function DemoRequestPage() {
                     value={formData.schoolName}
                     onChange={(e) => handleInputChange("schoolName", e.target.value)}
                     onBlur={() => handleBlur("schoolName")}
-                    className={`h-11 bg-slate-900/60 border-slate-800 hover:bg-slate-900 transition-colors text-slate-100 placeholder:text-slate-500 ${
-                      errors.schoolName ? "border-red-300 focus-visible:ring-red-500/20 focus-visible:border-red-500" : ""
-                    }`}
+                    className={`h-11 bg-secondary dark:bg-slate-900/60 border-border hover:bg-muted dark:hover:bg-slate-900 transition-colors text-foreground placeholder:text-muted-foreground ${errors.schoolName ? "border-red-300 focus-visible:ring-red-500/20 focus-visible:border-red-500" : ""
+                      }`}
                     aria-invalid={!!errors.schoolName}
                     aria-describedby={errors.schoolName ? "schoolName-error" : undefined}
                     disabled={isLoading}
@@ -404,7 +404,7 @@ export function DemoRequestPage() {
 
                 {/* Role at School */}
                 <div className="space-y-2">
-                  <Label htmlFor="role" className="text-sm font-medium text-slate-200">
+                  <Label htmlFor="role" className="text-sm font-medium text-foreground">
                     Role at School <span className="text-red-500">*</span>
                   </Label>
                   <Select
@@ -418,9 +418,8 @@ export function DemoRequestPage() {
                   >
                     <SelectTrigger
                       id="role"
-                      className={`w-full h-11 bg-slate-900/60 border-slate-800 hover:bg-slate-900 transition-colors text-slate-100 ${
-                        errors.role ? "border-red-300" : ""
-                      }`}
+                      className={`w-full h-11 bg-secondary dark:bg-slate-900/60 border-border hover:bg-muted dark:hover:bg-slate-900 transition-colors text-foreground ${errors.role ? "border-red-300" : ""
+                        }`}
                       aria-label="Select your role"
                       disabled={isLoading}
                     >
@@ -442,7 +441,7 @@ export function DemoRequestPage() {
                 {/* Other Role Input - shown only when "Others" is selected */}
                 {formData.role === "other" && (
                   <div className="space-y-2 animate-in fade-in-0 slide-in-from-top-2 duration-200">
-                    <Label htmlFor="otherRole" className="text-sm font-medium text-slate-200">
+                    <Label htmlFor="otherRole" className="text-sm font-medium text-foreground">
                       Please specify your role <span className="text-red-500">*</span>
                     </Label>
                     <Input
@@ -452,9 +451,8 @@ export function DemoRequestPage() {
                       value={formData.otherRole}
                       onChange={(e) => handleInputChange("otherRole", e.target.value)}
                       onBlur={() => handleBlur("otherRole")}
-                      className={`h-11 bg-slate-900/60 border-slate-800 hover:bg-slate-900 transition-colors text-slate-100 placeholder:text-slate-500 ${
-                        errors.otherRole ? "border-red-300 focus-visible:ring-red-500/20 focus-visible:border-red-500" : ""
-                      }`}
+                      className={`h-11 bg-secondary dark:bg-slate-900/60 border-border hover:bg-muted dark:hover:bg-slate-900 transition-colors text-foreground placeholder:text-muted-foreground ${errors.otherRole ? "border-red-300 focus-visible:ring-red-500/20 focus-visible:border-red-500" : ""
+                        }`}
                       aria-invalid={!!errors.otherRole}
                       aria-describedby={errors.otherRole ? "otherRole-error" : undefined}
                       disabled={isLoading}
@@ -469,7 +467,7 @@ export function DemoRequestPage() {
 
                 {/* Number of Students */}
                 <div className="space-y-2">
-                  <Label htmlFor="studentCount" className="text-sm font-medium text-slate-200">
+                  <Label htmlFor="studentCount" className="text-sm font-medium text-foreground">
                     Number of Students <span className="text-red-500">*</span>
                   </Label>
                   <Select
@@ -478,9 +476,8 @@ export function DemoRequestPage() {
                   >
                     <SelectTrigger
                       id="studentCount"
-                      className={`w-full h-11 bg-slate-900/60 border-slate-800 hover:bg-slate-900 transition-colors text-slate-100 ${
-                        errors.studentCount ? "border-red-300" : ""
-                      }`}
+                      className={`w-full h-11 bg-secondary dark:bg-slate-900/60 border-border hover:bg-muted dark:hover:bg-slate-900 transition-colors text-foreground ${errors.studentCount ? "border-red-300" : ""
+                        }`}
                       aria-label="Select number of students"
                       disabled={isLoading}
                     >
@@ -500,8 +497,8 @@ export function DemoRequestPage() {
 
                 {/* Country / City - Optional */}
                 <div className="space-y-2">
-                  <Label htmlFor="countryCity" className="text-sm font-medium text-slate-200">
-                    Country / City <span className="text-slate-500">(Optional)</span>
+                  <Label htmlFor="countryCity" className="text-sm font-medium text-foreground">
+                    Country / City <span className="text-muted-foreground">(Optional)</span>
                   </Label>
                   <Input
                     id="countryCity"
@@ -509,7 +506,7 @@ export function DemoRequestPage() {
                     placeholder="Enter your location"
                     value={formData.countryCity}
                     onChange={(e) => handleInputChange("countryCity", e.target.value)}
-                    className="h-11 bg-slate-900/60 border-slate-800 hover:bg-slate-900 transition-colors text-slate-100 placeholder:text-slate-500"
+                    className="h-11 bg-secondary dark:bg-slate-900/60 border-border hover:bg-muted dark:hover:bg-slate-900 transition-colors text-foreground placeholder:text-muted-foreground"
                     disabled={isLoading}
                   />
                 </div>
@@ -517,41 +514,40 @@ export function DemoRequestPage() {
                 {/* Do you presently have an EduManage Account? */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2">
-                    <Label className="text-sm font-medium text-slate-200">
+                    <Label className="text-sm font-medium text-foreground">
                       Do you presently have an EduManage Account?
                     </Label>
                     <span className="text-red-500">*</span>
                   </div>
-                  
+
                   <RadioGroup
                     value={formData.accountStatus}
                     onValueChange={(value) => handleInputChange("accountStatus", value)}
                     className="grid gap-3"
                   >
                     {/* Option 1: Not yet */}
-                    <label 
+                    <label
                       htmlFor="not_yet"
-                      className={`relative flex items-start gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${
-                        formData.accountStatus === "not_yet" 
-                          ? "border-sky-400 bg-sky-500/10 shadow-sm" 
-                          : "border-slate-800 bg-slate-950 hover:border-slate-700 hover:bg-slate-900"
-                      }`}
+                      className={`relative flex items-start gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${formData.accountStatus === "not_yet"
+                          ? "border-primary dark:border-sky-400 bg-primary/10 dark:bg-sky-500/10 shadow-sm"
+                          : "border-border bg-card dark:bg-slate-950 hover:border-muted-foreground/30 dark:hover:border-slate-700 hover:bg-muted dark:hover:bg-slate-900"
+                        }`}
                     >
-                      <RadioGroupItem 
-                        value="not_yet" 
-                        id="not_yet" 
-                        className="mt-0.5 data-[state=checked]:border-sky-400 data-[state=checked]:text-sky-400" 
+                      <RadioGroupItem
+                        value="not_yet"
+                        id="not_yet"
+                        className="mt-0.5 data-[state=checked]:border-primary dark:data-[state=checked]:border-sky-400 data-[state=checked]:text-primary dark:data-[state=checked]:text-sky-400"
                       />
                       <div className="flex-1">
-                        <span className="text-sm font-medium text-slate-100 block">
+                        <span className="text-sm font-medium text-foreground block">
                           Not yet, but I'm interested in learning more
                         </span>
-                        <span className="text-xs text-slate-400 mt-0.5 block">
+                        <span className="text-xs text-muted-foreground mt-0.5 block">
                           New to EduManage
                         </span>
                       </div>
                       {formData.accountStatus === "not_yet" && (
-                        <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-sky-400 flex items-center justify-center">
+                        <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-primary dark:bg-sky-400 flex items-center justify-center">
                           <svg className="w-3 h-3 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                           </svg>
@@ -560,24 +556,23 @@ export function DemoRequestPage() {
                     </label>
 
                     {/* Option 2: Free trial */}
-                    <label 
+                    <label
                       htmlFor="free_trial"
-                      className={`relative flex items-start gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${
-                        formData.accountStatus === "free_trial" 
-                          ? "border-sky-400 bg-sky-500/10 shadow-sm" 
-                          : "border-slate-800 bg-slate-950 hover:border-slate-700 hover:bg-slate-900"
-                      }`}
+                      className={`relative flex items-start gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${formData.accountStatus === "free_trial"
+                          ? "border-primary dark:border-sky-400 bg-primary/10 dark:bg-sky-500/10 shadow-sm"
+                          : "border-border bg-card dark:bg-slate-950 hover:border-muted-foreground/30 dark:hover:border-slate-700 hover:bg-muted dark:hover:bg-slate-900"
+                        }`}
                     >
-                      <RadioGroupItem 
-                        value="free_trial" 
-                        id="free_trial" 
-                        className="mt-0.5 data-[state=checked]:border-sky-400 data-[state=checked]:text-sky-400" 
+                      <RadioGroupItem
+                        value="free_trial"
+                        id="free_trial"
+                        className="mt-0.5 data-[state=checked]:border-sky-400 data-[state=checked]:text-sky-400"
                       />
                       <div className="flex-1">
-                        <span className="text-sm font-medium text-slate-100 block">
+                        <span className="text-sm font-medium text-foreground block">
                           Yes, I currently have a free trial account
                         </span>
-                        <span className="text-xs text-slate-400 mt-0.5 block">
+                        <span className="text-xs text-muted-foreground mt-0.5 block">
                           Exploring EduManage features
                         </span>
                       </div>
@@ -591,24 +586,23 @@ export function DemoRequestPage() {
                     </label>
 
                     {/* Option 3: Paid account */}
-                    <label 
+                    <label
                       htmlFor="paid_account"
-                      className={`relative flex items-start gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${
-                        formData.accountStatus === "paid_account" 
-                          ? "border-sky-400 bg-sky-500/10 shadow-sm" 
-                          : "border-slate-800 bg-slate-950 hover:border-slate-700 hover:bg-slate-900"
-                      }`}
+                      className={`relative flex items-start gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${formData.accountStatus === "paid_account"
+                          ? "border-primary dark:border-sky-400 bg-primary/10 dark:bg-sky-500/10 shadow-sm"
+                          : "border-border bg-card dark:bg-slate-950 hover:border-muted-foreground/30 dark:hover:border-slate-700 hover:bg-muted dark:hover:bg-slate-900"
+                        }`}
                     >
-                      <RadioGroupItem 
-                        value="paid_account" 
-                        id="paid_account" 
-                        className="mt-0.5 data-[state=checked]:border-sky-400 data-[state=checked]:text-sky-400" 
+                      <RadioGroupItem
+                        value="paid_account"
+                        id="paid_account"
+                        className="mt-0.5 data-[state=checked]:border-sky-400 data-[state=checked]:text-sky-400"
                       />
                       <div className="flex-1">
-                        <span className="text-sm font-medium text-slate-100 block">
+                        <span className="text-sm font-medium text-foreground block">
                           Yes, I currently have a paid account
                         </span>
-                        <span className="text-xs text-slate-400 mt-0.5 block">
+                        <span className="text-xs text-muted-foreground mt-0.5 block">
                           Active EduManage subscriber
                         </span>
                       </div>
@@ -622,24 +616,23 @@ export function DemoRequestPage() {
                     </label>
 
                     {/* Option 4: Renew */}
-                    <label 
+                    <label
                       htmlFor="renew"
-                      className={`relative flex items-start gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${
-                        formData.accountStatus === "renew" 
-                          ? "border-sky-400 bg-sky-500/10 shadow-sm" 
-                          : "border-slate-800 bg-slate-950 hover:border-slate-700 hover:bg-slate-900"
-                      }`}
+                      className={`relative flex items-start gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${formData.accountStatus === "renew"
+                          ? "border-primary dark:border-sky-400 bg-primary/10 dark:bg-sky-500/10 shadow-sm"
+                          : "border-border bg-card dark:bg-slate-950 hover:border-muted-foreground/30 dark:hover:border-slate-700 hover:bg-muted dark:hover:bg-slate-900"
+                        }`}
                     >
-                      <RadioGroupItem 
-                        value="renew" 
-                        id="renew" 
-                        className="mt-0.5 data-[state=checked]:border-sky-400 data-[state=checked]:text-sky-400" 
+                      <RadioGroupItem
+                        value="renew"
+                        id="renew"
+                        className="mt-0.5 data-[state=checked]:border-sky-400 data-[state=checked]:text-sky-400"
                       />
                       <div className="flex-1">
-                        <span className="text-sm font-medium text-slate-100 block">
+                        <span className="text-sm font-medium text-foreground block">
                           Yes, I want to renew my account
                         </span>
-                        <span className="text-xs text-slate-400 mt-0.5 block">
+                        <span className="text-xs text-muted-foreground mt-0.5 block">
                           Extend your subscription
                         </span>
                       </div>
@@ -652,7 +645,7 @@ export function DemoRequestPage() {
                       )}
                     </label>
                   </RadioGroup>
-                  
+
                   {errors.accountStatus && (
                     <p className="text-sm text-red-500 flex items-center gap-1.5">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -665,15 +658,15 @@ export function DemoRequestPage() {
 
                 {/* Challenges - Optional */}
                 <div className="space-y-2">
-                  <Label htmlFor="challenges" className="text-sm font-medium text-slate-200">
-                    What challenges are you facing? <span className="text-slate-500">(Optional)</span>
+                  <Label htmlFor="challenges" className="text-sm font-medium text-foreground">
+                    What challenges are you facing? <span className="text-muted-foreground">(Optional)</span>
                   </Label>
                   <Textarea
                     id="challenges"
                     placeholder="Tell us about your current challenges..."
                     value={formData.challenges}
                     onChange={(e) => handleInputChange("challenges", e.target.value)}
-                    className="min-h-[80px] bg-slate-900/60 border-slate-800 hover:bg-slate-900 transition-colors resize-none text-slate-100 placeholder:text-slate-500"
+                    className="min-h-[80px] bg-secondary dark:bg-slate-900/60 border-border hover:bg-muted dark:hover:bg-slate-900 transition-colors resize-none text-foreground placeholder:text-muted-foreground"
                     disabled={isLoading}
                   />
                 </div>
@@ -698,9 +691,9 @@ export function DemoRequestPage() {
                 </Button>
 
                 {/* Trust Text */}
-                <div className="flex items-center justify-center gap-2 text-xs text-slate-400 pt-2">
+                <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground pt-2">
                   <svg
-                    className="w-4 h-4 text-sky-300"
+                    className="w-4 h-4 text-primary dark:text-sky-300"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -719,14 +712,14 @@ export function DemoRequestPage() {
             </div>
 
             {/* Footer Links */}
-            <div className="mt-6 text-center text-xs text-slate-400">
+            <div className="mt-6 text-center text-xs text-muted-foreground">
               <p>
                 By submitting this form, you agree to our{" "}
-                <Link to="#" className="text-slate-200 hover:text-sky-300 transition-colors">
+                <Link to="#" className="text-foreground hover:text-primary dark:hover:text-sky-300 transition-colors">
                   Terms of Service
                 </Link>{" "}
                 and{" "}
-                <Link to="#" className="text-slate-200 hover:text-sky-300 transition-colors">
+                <Link to="#" className="text-foreground hover:text-primary dark:hover:text-sky-300 transition-colors">
                   Privacy Policy
                 </Link>
               </p>
