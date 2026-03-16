@@ -1,0 +1,293 @@
+{
+  "common": {
+    "language": "Language",
+    "english": "English",
+    "amharic": "Amharic",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "search": "Search",
+    "filter": "Filter",
+    "viewAll": "View All",
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "contactUs": "Contact Us",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "logout": "Logout",
+    "home": "Home",
+    "about": "About",
+    "pricing": "Pricing",
+    "product": "Product",
+    "demo": "Demo",
+    "contact": "Contact"
+  },
+  "header": {
+    "title": "School Hub",
+    "subtitle": "Education Management System",
+    "features": "Features",
+    "solutions": "Solutions",
+    "pricing": "Pricing",
+    "about": "About Us",
+    "contact": "Contact",
+    "getDemo": "Get Demo",
+    "login": "Login"
+  },
+  "hero": {
+    "titleLine1": "Empowering education through smart management.",
+    "titleLine2": "",
+    "title": "Modern School Management System",
+    "subtitle": "Streamline your educational institution with our comprehensive digital solution. Manage students, staff, finances, and academics all in one powerful platform.",
+    "cta": "Request a live demo",
+    "watchDemo": "Watch Demo",
+    "trustedBy": "Trusted by 500+ educational institutions worldwide",
+    "stats": {
+      "schools": "Schools Worldwide",
+      "users": "Active Users",
+      "countries": "Countries",
+      "uptime": "Uptime SLA"
+    },
+    "activeStudents": "Active students this term",
+    "attendance": "Average daily attendance"
+  },
+  "features": {
+    "title": "Powerful Features",
+    "subtitle": "Everything you need to manage your school efficiently",
+    "studentManagement": {
+      "title": "Student Management",
+      "description": "Comprehensive student records, enrollment management, and performance tracking"
+    },
+    "staffManagement": {
+      "title": "Staff Management",
+      "description": "Manage faculty, staff, attendance, and performance evaluations"
+    },
+    "financeManagement": {
+      "title": "Finance Management",
+      "description": "Track fees, salaries, budgets, and financial reports with ease"
+    },
+    "academicManagement": {
+      "title": "Academic Management",
+      "description": "Curriculum planning, scheduling, grading, and transcript management"
+    },
+    "libraryManagement": {
+      "title": "Library Management",
+      "description": "Digital library catalog, book issuing, and resource management"
+    },
+    "attendanceTracking": {
+      "title": "Attendance Tracking",
+      "description": "Real-time attendance monitoring for students and staff"
+    }
+  },
+  "solutions": {
+    "title": "Tailored Solutions",
+    "subtitle": "We serve educational institutions of all sizes",
+    "k12": {
+      "title": "K-12 Schools",
+      "description": "Complete management solution for primary and secondary schools"
+    },
+    "higherEducation": {
+      "title": "Higher Education",
+      "description": "University and college management system"
+    },
+    "international": {
+      "title": "International Schools",
+      "description": "Multi-language, multi-currency support for global institutions"
+    },
+    "training": {
+      "title": "Training Centers",
+      "description": "Professional development and vocational training management"
+    }
+  },
+  "pricing": {
+    "title": "Simple, Transparent Pricing",
+    "subtitle": "Choose the plan that fits your institution",
+    "starter": {
+      "name": "Starter",
+      "price": "99",
+      "period": "/month",
+      "description": "Perfect for small schools",
+      "features": ["Up to 500 students", "Basic modules", "Email support", "Standard analytics"]
+    },
+    "professional": {
+      "name": "Professional",
+      "price": "199",
+      "period": "/month",
+      "description": "For growing institutions",
+      "features": ["Up to 2,000 students", "All modules", "Priority support", "Advanced analytics", "API access"]
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "price": "Custom",
+      "period": "",
+      "description": "For large organizations",
+      "features": ["Unlimited students", "Custom modules", "Dedicated support", "Full analytics", "API access", "On-premise option"]
+    },
+    "cta": "Start Free Trial",
+    "note": "30-day free trial. No credit card required."
+  },
+  "about": {
+    "title": "About School Hub",
+    "subtitle": "Transforming Education Through Technology",
+    "mission": {
+      "title": "Our Mission",
+      "description": "To empower educational institutions with cutting-edge technology that simplifies administration, enhances learning outcomes, and enables educators to focus on what matters most - teaching."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "description": "To become the global leader in educational management solutions, making quality education accessible to institutions of all sizes through innovative technology."
+    },
+    "values": {
+      "title": "Our Values",
+      "innovation": "Innovation",
+      "reliability": "Reliability",
+      "customerFocus": "Customer Focus",
+      "integrity": "Integrity"
+    },
+    "stats": {
+      "students": "500K+",
+      "studentsLabel": "Students Managed",
+      "institutions": "500+",
+      "institutionsLabel": "Institutions",
+      "countries": "30+",
+      "countriesLabel": "Countries",
+      "support": "24/7",
+      "supportLabel": "Support"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We'd love to hear from you",
+    "name": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "institution": "Institution Name",
+    "message": "Your Message",
+    "submit": "Send Message",
+    "success": "Thank you! We'll get back to you soon.",
+    "info": {
+      "email": "info@schoolhub.com",
+      "phone": "+1 (555) 123-4567",
+      "address": "123 Education Street, Tech City, TC 12345"
+    }
+  },
+  "demo": {
+    "title": "Request a Demo",
+    "subtitle": "See School Hub in action",
+    "name": "Full Name",
+    "email": "Work Email",
+    "phone": "Phone Number",
+    "institution": "Institution Name",
+    "role": "Your Role",
+    "students": "Number of Students",
+    "message": "Anything else you'd like to know?",
+    "submit": "Request Demo",
+    "success": "Thanks! Our team will contact you within 24 hours."
+  },
+  "footer": {
+    "description": "Comprehensive school management solution for modern educational institutions.",
+    "product": "Product",
+    "company": "Company",
+    "resources": "Resources",
+    "legal": "Legal",
+    "features": "Features",
+    "solutions": "Solutions",
+    "pricing": "Pricing",
+    "aboutUs": "About Us",
+    "careers": "Careers",
+    "blog": "Blog",
+    "helpCenter": "Help Center",
+    "documentation": "Documentation",
+    "api": "API",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookie Policy",
+    "copyright": "© 2024 School Hub. All rights reserved.",
+    "address": "123 Education Street, Tech City, TC 12345"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "How long does implementation take?",
+        "answer": "Implementation typically takes 2-4 weeks depending on your institution's size and requirements. We provide full onboarding support."
+      },
+      {
+        "question": "Is my data secure?",
+        "answer": "Absolutely. We use enterprise-grade security with encryption, regular backups, and compliance with international data protection regulations."
+      },
+      {
+        "question": "Can I migrate from my current system?",
+        "answer": "Yes, we offer data migration services from most major school management systems. Our team handles the entire process."
+      },
+      {
+        "question": "Do you offer training?",
+        "answer": "Yes, we provide comprehensive training for administrators, teachers, and staff. Training can be done remotely or on-site."
+      },
+      {
+        "question": "What support do you offer?",
+        "answer": "We offer 24/7 support through email, chat, and phone. Enterprise customers get dedicated support managers."
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "items": [
+      {
+        "name": "Dr. Sarah Johnson",
+        "role": "Principal, Lincoln High School",
+        "text": "School Hub has transformed how we manage our institution. The efficiency gains have been remarkable."
+      },
+      {
+        "name": "Michael Chen",
+        "role": "IT Director, Riverside Academy",
+        "text": "The best school management system we've used. Intuitive interface and excellent support."
+      },
+      {
+        "name": "Emily Williams",
+        "role": "Administrator, Global International School",
+        "text": "Implementation was smooth and the support team is always there when we need them."
+      }
+    ]
+  },
+  "integrations": {
+    "title": "Seamless Integrations",
+    "subtitle": "Connect with your favorite tools",
+    "description": "School Hub integrates with hundreds of educational tools and platforms to create a unified ecosystem."
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "email": "Email Address",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "submit": "Sign In",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up",
+    "signOut": "Sign Out"
+  },
+  "errors": {
+    "required": "This field is required",
+    "invalidEmail": "Please enter a valid email address",
+    "passwordTooShort": "Password must be at least 8 characters",
+    "serverError": "Something went wrong. Please try again.",
+    "networkError": "Network error. Please check your connection."
+  },
+  "notifications": {
+    "welcome": "Welcome to School Hub!",
+    "profileUpdated": "Profile updated successfully",
+    "settingsSaved": "Settings saved successfully",
+    "error": "An error occurred"
+  },
+  "cta": {
+    "trial": "Free 14-day trial",
+    "noCard": "No credit card required",
+    "fullAccess": "Full feature access",
+    "cancelAnytime": "Cancel anytime"
+  }
+}

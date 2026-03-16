@@ -1,7 +1,7 @@
 import { Menu, X, ChevronDown, ArrowUp, Sun, Moon } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { gsap } from "gsap";
 import {
   DropdownMenu,
@@ -9,10 +9,29 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
-// Smooth scroll to top function
+// Smooth scroll to top function with animation
 const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  const startPosition = window.scrollY;
+  const duration = 800;
+  const startTime = performance.now();
+
+  const animateScroll = (currentTime: number) => {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    // Ease out cubic function for smooth deceleration
+    const easeOut = 1 - Math.pow(1 - progress, 3);
+    
+    window.scrollTo(0, startPosition * (1 - easeOut));
+
+    if (progress < 1) {
+      requestAnimationFrame(animateScroll);
+    }
+  };
+
+  requestAnimationFrame(animateScroll);
 };
 
 // Handle navigation click - scroll to top for home page
@@ -25,8 +44,10 @@ const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) =>
 };
 
 export function Header() {
+  const { t } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productDropdownOpen, setProductDropdownOpen] = useState(false);
+  const [mobileProductOpen, setMobileProductOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
@@ -37,6 +58,7 @@ export function Header() {
     document.documentElement.classList.toggle("dark", newTheme === "dark");
   };
   const location = useLocation();
+  const navigate = useNavigate();
 
   const headerRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
@@ -141,26 +163,28 @@ export function Header() {
         ref={headerRef}
         className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/70 transition-all duration-300"
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex h-20 items-center justify-between">
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6">
+          <div className="flex h-16 sm:h-20 items-center justify-between">
             {/* Logo */}
             <div ref={logoRef} className="flex items-center">
-              <Link
-                to="/"
-                onClick={(e) => handleNavClick(e, '/')}
-                className="flex items-center space-x-3 group"
+              <button
+                onClick={() => {
+                  navigate('/');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="flex items-center space-x-2 sm:space-x-3 group"
               >
-                <div className="h-11 w-11 rounded-2xl bg-[#e35336] dark:bg-[#f47236] flex items-center justify-center group-hover:scale-105 transition-all duration-300">
-                  <span className="text-slate-950 font-extrabold text-xl">E</span>
+                <div className="h-9 w-9 sm:h-11 sm:w-11 rounded-xl sm:rounded-2xl bg-[#e35336] dark:bg-[#f47236] flex items-center justify-center group-hover:scale-105 transition-all duration-300">
+                  <span className="text-slate-950 font-extrabold text-lg sm:text-xl">E</span>
                 </div>
-                <span className="text-2xl font-semibold bg-gradient-to-r from-sky-400 via-cyan-300 to-fuchsia-400 bg-clip-text text-transparent group-hover:from-sky-300 group-hover:to-fuchsia-300 transition-all duration-300">
-                  EduManage
+                <span className="text-xl sm:text-2xl font-semibold bg-gradient-to-r from-sky-400 via-cyan-300 to-fuchsia-400 bg-clip-text text-transparent group-hover:from-sky-300 group-hover:to-fuchsia-300 transition-all duration-300">
+                  School Hub
                 </span>
-              </Link>
+              </button>
             </div>
 
             {/* Desktop Navigation */}
-            <nav ref={navRef} className="hidden md:flex items-center space-x-8 text-sm">
+            <nav ref={navRef} className="hidden lg:flex items-center space-x-6 lg:space-x-8 text-sm">
 
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -173,19 +197,16 @@ export function Header() {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="start" className="w-56 border-border bg-popover text-popover-foreground shadow-xl">
                   <DropdownMenuItem asChild className="hover:bg-accent hover:text-accent-foreground transition-colors duration-200">
-                    <Link to="/product">Product Overview</Link>
+                    <Link to="/product/features">Feature Tour</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild className="hover:bg-accent hover:text-accent-foreground transition-colors duration-200">
-                    <Link to="/product#features">Feature Tour</Link>
+                    <Link to="/product/student-information">Student Information System</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild className="hover:bg-accent hover:text-accent-foreground transition-colors duration-200">
-                    <Link to="/product#student-information-system">Student Information System</Link>
+                    <Link to="/product/solutions">Solutions</Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild className="hover:bg-accent hover:text-accent-foreground transition-colors duration-200">
-                    <Link to="/product#solutions">Solutions</Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild className="hover:bg-accent hover:text-accent-foreground transition-colors duration-200">
-                    <Link to="/product#testimonials">Testimonials</Link>
+                    <Link to="/product/testimonials">Testimonials</Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -204,7 +225,7 @@ export function Header() {
                 className={`text-base font-medium transition-all duration-300 relative group ${isActive('/about') ? 'text-primary' : 'text-foreground/80 hover:text-primary'
                   }`}
               >
-                About
+                {t("header.about")}
                 <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-fuchsia-400 transform origin-left transition-transform duration-300 ${isActive('/about') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
               </Link>
               <Link
@@ -213,99 +234,131 @@ export function Header() {
                 className={`text-base font-medium transition-all duration-300 relative group ${isActive('/contact') ? 'text-primary' : 'text-foreground/80 hover:text-primary'
                   }`}
               >
-                Contact
+                {t("header.contact")}
                 <span className={`absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-fuchsia-400 transform origin-left transition-transform duration-300 ${isActive('/contact') ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
               </Link>
             </nav>
 
             {/* Desktop CTA */}
-            <div ref={ctaRef} className="hidden md:flex items-center space-x-4">
+            <div ref={ctaRef} className="hidden lg:flex items-center gap-2 sm:gap-3 lg:gap-4">
+              {/* Language Switcher */}
+              <LanguageSwitcher />
               {/* Theme Toggle Button */}
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-xl bg-secondary border border-border hover:bg-accent transition-all duration-300"
+                className="p-2 rounded-lg lg:rounded-xl bg-secondary border border-border hover:bg-accent transition-all duration-300"
                 aria-label="Toggle theme"
               >
                 {theme === "dark" ? (
-                  <Moon className="h-5 w-5 text-foreground" />
+                  <Moon className="h-4 w-4 lg:h-5 lg:w-5 text-foreground" />
                 ) : (
-                  <Sun className="h-5 w-5 text-yellow-600" />
+                  <Sun className="h-4 w-4 lg:h-5 lg:w-5 text-yellow-600" />
                 )}
               </button>
-              <Link to="/signin">
-                <Button
-                  variant="ghost"
-                  size="default"
-                  className="text-foreground hover:text-primary hover:bg-secondary border border-border transition-all duration-300 font-medium"
-                >
-                  Sign In
-                </Button>
-              </Link>
               <Link to="/demo">
                 <Button
-                  size="default"
-                  className="bg-[#e35336] dark:bg-[#f47236] hover:bg-[#c4452b] dark:hover:bg-[#e35336] text-white transition-all duration-300 font-semibold"
+                  size="sm"
+                  className="bg-[#e35336] dark:bg-[#f47236] hover:bg-[#c4452b] dark:hover:bg-[#e35336] text-white transition-all duration-300 font-semibold text-sm"
                 >
                   Request Demo
                 </Button>
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden p-2 rounded-xl hover:bg-secondary border border-border transition-colors duration-300"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? (
-                <X className="h-6 w-6 text-foreground hover:text-primary transition-colors duration-300" />
-              ) : (
-                <Menu className="h-6 w-6 text-foreground hover:text-primary transition-colors duration-300" />
-              )}
-            </button>
+            {/* Tablet/Mobile Menu Button */}
+            <div className="flex lg:hidden items-center gap-2">
+              {/* Language Switcher for Mobile (Always Visible) */}
+              <div className="md:hidden">
+                <LanguageSwitcher />
+              </div>
+              {/* Show Request Demo on tablet, hidden on mobile */}
+              <Link to="/demo" className="hidden md:block">
+                <Button
+                  size="sm"
+                  className="bg-[#e35336] dark:bg-[#f47236] hover:bg-[#c4452b] dark:hover:bg-[#e35336] text-white transition-all duration-300 font-semibold text-xs sm:text-sm"
+                >
+                  Request Demo
+                </Button>
+              </Link>
+              {/* Show Demo on mobile */}
+              <Link to="/demo" className="md:hidden">
+                <Button
+                  size="sm"
+                  className="bg-[#e35336] dark:bg-[#f47236] hover:bg-[#c4452b] dark:hover:bg-[#e35336] text-white transition-all duration-300 font-semibold text-xs"
+                >
+                  Demo
+                </Button>
+              </Link>
+              <button
+                className="p-2 rounded-lg lg:rounded-xl hover:bg-secondary border border-border transition-colors duration-300"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                {mobileMenuOpen ? (
+                  <X className="h-5 w-5 lg:h-6 lg:w-6 text-foreground hover:text-primary transition-colors duration-300" />
+                ) : (
+                  <Menu className="h-5 w-5 lg:h-6 lg:w-6 text-foreground hover:text-primary transition-colors duration-300" />
+                )}
+              </button>
+            </div>
           </div>
 
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div ref={mobileMenuRef} className="md:hidden py-4 border-t border-border">
-              <nav className="flex flex-col space-y-4">
+          {/* Mobile/Tablet Menu */}
+          {(mobileMenuOpen) && (
+            <div ref={mobileMenuRef} className="lg:hidden py-4 border-t border-border">
+              <nav className="flex flex-col space-y-3 sm:space-y-4">
+                {/* Collapsible Product Section */}
                 <div className="space-y-2">
-                  <span className="text-sm font-semibold text-foreground">Product</span>
-                  <div className="pl-4 flex flex-col space-y-2">
-                    <Link
-                      to="/product#features"
-                      onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                      className="text-sm text-foreground/70 hover:text-primary transition-colors duration-300"
-                    >
-                      Feature Tour
-                    </Link>
-                    <Link
-                      to="/product#student-information-system"
-                      onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                      className="text-sm text-foreground/70 hover:text-primary transition-colors duration-300"
-                    >
-                      Student Information System
-                    </Link>
-                    <Link
-                      to="/product#why-choose-us"
-                      onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                      className="text-sm text-foreground/70 hover:text-primary transition-colors duration-300"
-                    >
-                      Why Choose Us
-                    </Link>
-                    <Link
-                      to="/product#solutions"
-                      onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                      className="text-sm text-foreground/70 hover:text-primary transition-colors duration-300"
-                    >
-                      Solutions
-                    </Link>
-                    <Link
-                      to="/product#testimonials"
-                      onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                      className="text-sm text-foreground/70 hover:text-primary transition-colors duration-300"
-                    >
-                      Testimonials
-                    </Link>
+                  <button
+                    onClick={() => setMobileProductOpen(!mobileProductOpen)}
+                    className="flex items-center justify-between w-full text-sm font-semibold text-foreground hover:text-primary transition-colors duration-300"
+                    aria-expanded={mobileProductOpen}
+                    aria-controls="mobile-product-menu"
+                  >
+                    <span>Product</span>
+                    <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${mobileProductOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  <div 
+                    id="mobile-product-menu"
+                    className={`overflow-hidden transition-all duration-300 ${mobileProductOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
+                  >
+                    <div className="pl-4 flex flex-col space-y-2 py-2">
+                      <Link
+                        to="/product/features"
+                        onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                        className="text-sm text-foreground/70 hover:text-primary transition-colors duration-300"
+                      >
+                        Feature Tour
+                      </Link>
+                      <Link
+                        to="/product/student-information"
+                        onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                        className="text-sm text-foreground/70 hover:text-primary transition-colors duration-300"
+                      >
+                        Student Information System
+                      </Link>
+                      <Link
+                        to="/product/why-choose-us"
+                        onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                        className="text-sm text-foreground/70 hover:text-primary transition-colors duration-300"
+                      >
+                        Why Choose Us
+                      </Link>
+                      <Link
+                        to="/product/solutions"
+                        onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                        className="text-sm text-foreground/70 hover:text-primary transition-colors duration-300"
+                      >
+                        Solutions
+                      </Link>
+                      <Link
+                        to="/product/testimonials"
+                        onClick={() => { setMobileMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                        className="text-sm text-foreground/70 hover:text-primary transition-colors duration-300"
+                      >
+                        Testimonials
+                      </Link>
+                    </div>
                   </div>
                 </div>
                 <Link
@@ -321,7 +374,7 @@ export function Header() {
                   className={`text-sm transition-colors duration-300 ${isActive('/about') ? 'text-primary font-semibold' : 'text-foreground/70 hover:text-primary'
                     }`}
                 >
-                  About
+                  {t("header.about")}
                 </Link>
                 <Link
                   to="/contact"
@@ -329,33 +382,32 @@ export function Header() {
                   className={`text-sm transition-colors duration-300 ${isActive('/contact') ? 'text-primary font-semibold' : 'text-foreground/70 hover:text-primary'
                     }`}
                 >
-                  Contact
+                  {t("header.contact")}
                 </Link>
-                <div className="pt-4 space-y-2">
-                  <Link to="/signin">
-                    <Button variant="ghost" size="sm" className="w-full bg-secondary hover:bg-accent text-foreground hover:text-accent-foreground border border-border transition-colors duration-300">
-                      Sign In
-                    </Button>
-                  </Link>
+                <div className="pt-3 sm:pt-4 flex flex-col sm:flex-row gap-2 sm:gap-3">
+                  {/* Language Switcher for Mobile */}
+                  <div className="flex-1">
+                    <LanguageSwitcher />
+                  </div>
                   {/* Theme Toggle for Mobile */}
                   <button
                     onClick={toggleTheme}
-                    className="flex items-center justify-center p-3 rounded-xl bg-secondary border border-border hover:bg-accent transition-all duration-300 w-full"
+                    className="flex-1 flex items-center justify-center p-2.5 sm:p-3 rounded-lg sm:rounded-xl bg-secondary border border-border hover:bg-accent transition-all duration-300"
                     aria-label="Toggle theme"
                   >
                     {theme === "dark" ? (
                       <>
-                        <Moon className="h-5 w-5 text-foreground mr-2" />
-                        <span className="text-foreground">Switch to Light Mode</span>
+                        <Moon className="h-4 w-4 sm:h-5 sm:w-5 text-foreground mr-2" />
+                        <span className="text-foreground text-xs sm:text-sm font-medium">Switch to Light</span>
                       </>
                     ) : (
                       <>
-                        <Sun className="h-5 w-5 text-yellow-600 mr-2" />
-                        <span className="text-foreground">Switch to Dark Mode</span>
+                        <Sun className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-600 mr-2" />
+                        <span className="text-foreground text-xs sm:text-sm font-medium">Switch to Dark</span>
                       </>
                     )}
                   </button>
-                  <Link to="/demo">
+                  <Link to="/demo" className="flex-1 sm:hidden">
                     <Button
                       size="sm"
                       className="w-full bg-[#e35336] text-white hover:bg-[#c4452b] transition-all duration-300 border border-[#e35336]/40"
@@ -374,7 +426,7 @@ export function Header() {
       <button
         ref={scrollButtonRef}
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-[#e35336] text-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 ${showScrollTop ? 'opacity-100 visible' : 'opacity-0 invisible'
+        className={`fixed bottom-8 right-8 z-50 w-12 h-12 rounded-full bg-[#e35336] text-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer ${showScrollTop ? 'opacity-100 visible' : 'opacity-0 invisible'
           }`}
         aria-label="Scroll to top"
       >
@@ -383,3 +435,4 @@ export function Header() {
     </>
   );
 }
+

@@ -1,19 +1,20 @@
 import { Button } from "./ui/button";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const benefits = [
-  "Free 14-day trial",
-  "No credit card required",
-  "Full feature access",
-  "Cancel anytime"
-];
-
 export function CTASection() {
+  const { t } = useTranslation();
+  const benefits = [
+    t("cta.trial"),
+    t("cta.noCard"),
+    t("cta.fullAccess"),
+    t("cta.cancelAnytime")
+  ];
   const sectionRef = useRef<HTMLElement>(null);
   const badgeRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -151,7 +152,7 @@ export function CTASection() {
   return (
     <section
       ref={sectionRef}
-      className="py-24 relative overflow-hidden"
+      className="py-12 sm:py-16 lg:py-24 relative overflow-hidden"
     >
       {/* Background decorations — dark mode */}
       <div ref={gradientRef} className="absolute inset-0 hidden dark:block">
@@ -167,7 +168,7 @@ export function CTASection() {
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center px-3 sm:px-4">
           {/* Badge */}
           <div
             ref={badgeRef}
@@ -180,7 +181,7 @@ export function CTASection() {
           {/* Heading */}
           <h2
             ref={headingRef}
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground mb-8 leading-tight"
+            className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-foreground mb-5 sm:mb-6 lg:mb-8 leading-tight"
           >
             Ready to upgrade your school's operating system?
           </h2>
@@ -188,7 +189,7 @@ export function CTASection() {
           {/* Supporting text */}
           <p
             ref={subtextRef}
-            className="text-lg sm:text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl mx-auto"
+            className="text-sm sm:text-base lg:text-lg text-muted-foreground mb-6 sm:mb-8 lg:mb-10 leading-relaxed max-w-2xl mx-auto"
           >
             Start with a guided demo tailored to your workflows, then roll out at your own
             pace with white‑glove onboarding and migration support.
@@ -208,28 +209,19 @@ export function CTASection() {
           </div>
 
           {/* CTA buttons */}
-          <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button
-              size="lg"
-              className="bg-[#e35336] dark:bg-[#f47236] text-white hover:bg-[#c4452b] dark:hover:bg-[#e35336] text-lg px-12 py-8 font-bold rounded-2xl transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 border border-[#e35336]/70 group"
-            >
-              <span className="flex items-center">
-                Start free interactive demo
-                <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform duration-300" />
-              </span>
-            </Button>
+          <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center">
             <Button
               size="lg"
               variant="outline"
-              className="border-2 border-border text-foreground hover:bg-secondary text-lg px-12 py-8 font-bold rounded-2xl backdrop-blur-md transition-all duration-300 hover:border-primary/50 dark:hover:border-sky-300/70 hover:scale-[1.02] active:scale-[0.98]"
+              className="border-2 border-border text-foreground hover:bg-secondary text-sm sm:text-base lg:text-lg px-8 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-8 font-bold rounded-xl lg:rounded-2xl backdrop-blur-md transition-all duration-300 hover:border-primary/50 dark:hover:border-sky-300/70 hover:scale-[1.02] active:scale-[0.98]"
             >
               Schedule a Call
             </Button>
           </div>
 
           {/* Trust indicator */}
-          <div ref={trustRef} className="mt-16 pt-10 border-t border-border">
-            <p className="text-muted-foreground text-sm mb-6">
+          <div ref={trustRef} className="mt-10 sm:mt-12 lg:mt-16 pt-8 sm:pt-10 border-t border-border">
+            <p className="text-muted-foreground text-xs sm:text-sm mb-4 sm:mb-6">
               Trusted by high‑growth schools, universities, and training providers worldwide
             </p>
             <div className="flex justify-center items-center gap-12 flex-wrap">

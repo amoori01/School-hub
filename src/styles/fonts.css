@@ -1,6 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@400;500;600;700;800&display=swap");
 
 /*
   Global typography is wired through `theme.css`.
   This file is responsible only for loading the font families.
+  
+  Amharic (አማርኛ) support:
+  - Noto Sans Ethiopic: Primary font for Amharic text
+  - Fallback to system Ethiopic fonts if available
 */
+
+/* Apply Noto Sans Ethiopic for Amharic text */
+:lang(am) {
+  font-family: 'Noto Sans Ethiopic', 'Noto Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* Ensure all Ethiopic script text renders properly */
+[lang="am"],
+.amharic-text {
+  font-family: 'Noto Sans Ethiopic', 'Noto Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-feature-settings: "liga" 1, "kern" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

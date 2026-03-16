@@ -280,47 +280,9 @@ export function AuthenticationPage() {
           </form>
         </div>
 
-        {/* Footer */}
-        <div className="mt-8 text-center">
-          <p className="text-sm text-muted-foreground">
-            New to EduManage?{" "}
-            <Link to="/demo" className="font-semibold text-primary dark:text-sky-300 hover:text-primary/80 dark:hover:text-sky-200 transition-colors">
-              Request a demo
-            </Link>
-          </p>
-        </div>
 
-        {/* SSL Secure Indicator */}
-        <div className="mt-6 flex items-center justify-center gap-2 text-xs text-muted-foreground">
-          <div className="flex items-center gap-1.5">
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-              />
-            </svg>
-            <span>256-bit SSL encryption</span>
-          </div>
-          <span className="text-border">•</span>
-          <span>SOC 2 Compliant</span>
-        </div>
 
-        {/* Additional Trust Indicators */}
-        <div className="mt-4 flex items-center justify-center gap-6 text-xs text-muted-foreground">
-          <span>GDPR Ready</span>
-          <span className="text-border">•</span>
-          <span>99.9% Uptime</span>
-          <span className="text-border">•</span>
-          <span>24/7 Support</span>
-        </div>
+
       </div>
     </div>
   );
