@@ -12,6 +12,7 @@ import { StudentInfoPage } from "./pages/StudentInfoPage";
 import { SolutionsPage } from "./pages/SolutionsPage";
 import { TestimonialsPage } from "./pages/TestimonialsPage";
 import { WhyChooseUsPage } from "./pages/WhyChooseUsPage";
+import { AdminDemoRequestsPage } from "./pages/AdminDemoRequestsPage";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
 import { useEffect } from "react";
 
@@ -54,6 +55,7 @@ function AppContent() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/demo" element={<DemoRequestPage />} />
+          <Route path="/admin/demo-requests" element={<AdminDemoRequestsPage />} />
         </Routes>
       </main>
       <Footer />

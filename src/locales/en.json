@@ -56,6 +56,172 @@
     "activeStudents": "Active students this term",
     "attendance": "Average daily attendance"
   },
+  "home": {
+    "description1": "Our School Management System is a comprehensive digital platform designed to simplify and automate the daily academic and administrative operations of educational institutions. The system provides an integrated environment where administrators, teachers, students, parents, and staff can access important information through secure and user-friendly dashboards. From student admissions and attendance tracking to examinations, grading, and communication, the platform centralizes all school activities into one efficient system. By reducing manual paperwork and streamlining workflows, it enables schools to save time, improve accuracy, and focus more on delivering quality education.",
+    "description2": "The platform includes powerful modules such as Student Information Management, Timetable Scheduling, Attendance Monitoring, Examination and Gradebook Management, Finance and Fee Management, Library, Transportation, Human Resources, and Communication Tools. It also supports features like reporting and analytics, event calendars, messaging systems, and mobile accessibility for students and parents. With secure data management, role-based access control, and scalable architecture, the system helps institutions manage their entire academic ecosystem smoothly while enhancing collaboration and transparency across the school community."
+  },
+  "modules": {
+    "title": "A complete suite of mission-critical modules",
+    "subtitle": "Empower your educational institution with our comprehensive management tools",
+    "coreModules": "Core Modules",
+    "standardModules": "Standard Modules",
+    "core": {
+      "coursesAndBatches": {
+        "name": "Courses and Batches",
+        "description": "Create and manage courses, organize batches, and track enrollment periods effectively."
+      },
+      "certificateGenerator": {
+        "name": "Certificate Generator",
+        "description": "Design and generate customizable certificates for students and staff."
+      },
+      "studentInformation": {
+        "name": "Student Information",
+        "description": "Comprehensive student database with profiles, documents, and academic history."
+      },
+      "humanResources": {
+        "name": "Human Resources",
+        "description": "Manage employee records, payroll, leaves, and performance evaluations."
+      },
+      "multipleDashboards": {
+        "name": "Multiple Dashboards",
+        "description": "Role-based dashboards for admins, teachers, students, and parents."
+      },
+      "employeeTeacherLogin": {
+        "name": "Employee / Teacher Login",
+        "description": "Separate portal for staff with attendance, grading, and communication tools."
+      },
+      "studentAttendance": {
+        "name": "Student Attendance",
+        "description": "Track daily attendance with mobile check-in and automated notifications."
+      },
+      "studentAdmission": {
+        "name": "Student Admission",
+        "description": "Streamlined online admission process with document upload and status tracking."
+      },
+      "studentsParentsLogin": {
+        "name": "Students / Parents Login",
+        "description": "Dedicated portal for grades, attendance, fees, and communications."
+      },
+      "timetable": {
+        "name": "Timetable",
+        "description": "Create and manage class schedules with conflict detection and room allocation."
+      },
+      "newsManagement": {
+        "name": "News Management",
+        "description": "Publish announcements, news articles, and updates to specific groups."
+      },
+      "messagingSystem": {
+        "name": "Messaging System",
+        "description": "Internal messaging between staff, students, and parents with notifications."
+      },
+      "gradebook": {
+        "name": "Gradebook",
+        "description": "Record and manage grades with weighted calculations and GPA tracking."
+      },
+      "examination": {
+        "name": "Examination",
+        "description": "Plan, schedule, and grade exams with automated result processing."
+      },
+      "userManagement": {
+        "name": "User Management",
+        "description": "Manage roles, permissions, and access controls across the system."
+      },
+      "smsIntegration": {
+        "name": "SMS Integration",
+        "description": "Send SMS alerts for attendance, fees, and important announcements."
+      },
+      "schoolEventsCalendar": {
+        "name": "School / Events Calendar",
+        "description": "Shared calendar for events, exams, holidays, and activities."
+      },
+      "reportCenter": {
+        "name": "Report Center",
+        "description": "Generate comprehensive reports on academics, finance, and attendance."
+      },
+      "idCardGenerator": {
+        "name": "ID Card Generator",
+        "description": "Design and print customizable ID cards for students and staff."
+      },
+      "finance": {
+        "name": "Finance",
+        "description": "Manage fees, expenses, invoices, and financial reporting."
+      },
+      "customStudentRemarks": {
+        "name": "Custom Student Remarks",
+        "description": "Add personalized notes and observations for student progress."
+      }
+    },
+    "standard": {
+      "library": {
+        "name": "Library",
+        "description": "Digital catalog, book issuing, return tracking, and member management."
+      },
+      "dataManagement": {
+        "name": "Data Management",
+        "description": "Import, export, and backup your institutional data securely."
+      },
+      "emailIntegration": {
+        "name": "Email Integration",
+        "description": "Automated email notifications and newsletters to stakeholders."
+      },
+      "transportation": {
+        "name": "Transportation",
+        "description": "Track school buses, routes, and student pick-up/drop-off."
+      },
+      "customImport": {
+        "name": "Custom Import",
+        "description": "Bulk import data from spreadsheets and other systems."
+      },
+      "blog": {
+        "name": "Blog",
+        "description": "Publish articles, educational content, and school updates."
+      },
+      "customReport": {
+        "name": "Custom Report",
+        "description": "Build custom reports with drag-and-drop report builder."
+      },
+      "theme": {
+        "name": "Theme",
+        "description": "Customize the look and feel with branded themes and colors."
+      },
+      "placement": {
+        "name": "Placement",
+        "description": "Track student placements, internships, and career opportunities."
+      },
+      "gallery": {
+        "name": "Gallery",
+        "description": "Photo and video galleries for events, activities, and campus life."
+      },
+      "task": {
+        "name": "Task",
+        "description": "Assign and track tasks across departments and teams."
+      },
+      "inventory": {
+        "name": "Inventory",
+        "description": "Manage school supplies, equipment, and asset tracking."
+      },
+      "discussion": {
+        "name": "Discussion",
+        "description": "Forums for teachers, students, and parents to collaborate."
+      },
+      "onlineExam": {
+        "name": "Online Exam",
+        "description": "Conduct computer-based tests with anti-cheating features."
+      },
+      "alumni": {
+        "name": "Alumni",
+        "description": "Maintain alumni database and track graduate outcomes."
+      },
+      "hostel": {
+        "name": "Hostel",
+        "description": "Manage hostel rooms, allocations, and meal plans."
+      },
+      "institutionProfile": {
+        "name": "Institution Profile",
+        "description": "Public profile page with information and branding."
+      }
+    }
+  },
   "features": {
     "title": "Powerful Features",
     "subtitle": "Everything you need to manage your school efficiently",
@@ -289,5 +455,61 @@
     "noCard": "No credit card required",
     "fullAccess": "Full feature access",
     "cancelAnytime": "Cancel anytime"
+  },
+  "pages": {
+    "features": {
+      "title": "Powerful Features for Modern Education",
+      "subtitle": "Discover the comprehensive tools that streamline school operations and enhance learning outcomes."
+    },
+    "modules": {
+      "title": "Comprehensive Modules for Every Need",
+      "subtitle": "Explore our extensive range of modules designed to handle all aspects of school management."
+    },
+    "solutions": {
+      "title": "Tailored Solutions for Every Institution",
+      "subtitle": "Discover how our customizable solutions meet the unique needs of your organization."
+    },
+    "studentInfo": {
+      "title": "Student Information System",
+      "subtitle": "Centralize all student data with our powerful and intuitive SIS platform."
+    },
+    "testimonials": {
+      "title": "What Our Clients Say",
+      "subtitle": "Hear from schools and universities that have transformed their operations with School Hub."
+    },
+    "whyChooseUs": {
+      "title": "Why Choose School Hub",
+      "subtitle": "Discover the advantages that set us apart from other school management solutions."
+    },
+    "about": {
+      "mission": {
+        "title": "Our Mission",
+        "description": "To empower educational institutions worldwide with innovative technology that simplifies administration and enhances learning outcomes."
+      },
+      "vision": {
+        "title": "Our Vision",
+        "description": "To be the global leader in educational management solutions, transforming how institutions operate and students learn."
+      },
+      "values": {
+        "title": "Our Values",
+        "description": "We believe in innovation, integrity, excellence, and putting our customers at the heart of everything we do."
+      },
+      "stats": {
+        "experience": "Years of Experience",
+        "institutions": "Institutions",
+        "countries": "Countries",
+        "users": "Active Users"
+      },
+      "team": {
+        "ceo": "Chief Executive Officer",
+        "cto": "Chief Technology Officer",
+        "vpProduct": "VP of Product",
+        "headCustomerSuccess": "Head of Customer Success"
+      }
+    },
+    "pricing": {
+      "title": "Simple, Transparent Pricing",
+      "subtitle": "Choose the plan that fits your institution"
+    }
   }
 }

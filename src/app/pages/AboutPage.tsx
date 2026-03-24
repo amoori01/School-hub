@@ -4,40 +4,9 @@ import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "react-i18next";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const values = [
-  {
-    icon: Target,
-    title: "Our Mission",
-    description: "To empower educational institutions worldwide with innovative technology that simplifies administration and enhances learning outcomes."
-  },
-  {
-    icon: Eye,
-    title: "Our Vision",
-    description: "To be the global leader in educational management solutions, transforming how institutions operate and students learn."
-  },
-  {
-    icon: Heart,
-    title: "Our Values",
-    description: "We believe in innovation, integrity, excellence, and putting our customers at the heart of everything we do."
-  }
-];
-
-const stats = [
-  { number: "15+", label: "Years of Experience" },
-  { number: "5000+", label: "Institutions" },
-  { number: "150+", label: "Countries" },
-  { number: "2M+", label: "Active Users" }
-];
-
-const team = [
-  { name: "John Anderson", role: "Chief Executive Officer", avatar: "JA" },
-  { name: "Sarah Mitchell", role: "Chief Technology Officer", avatar: "SM" },
-  { name: "David Kumar", role: "VP of Product", avatar: "DK" },
-  { name: "Emily Chen", role: "Head of Customer Success", avatar: "EC" }
-];
 
 function Eye(props: React.ComponentProps<'svg'>) {
   return (
@@ -49,6 +18,39 @@ function Eye(props: React.ComponentProps<'svg'>) {
 }
 
 export function AboutPage() {
+  const { t } = useTranslation();
+
+  const values = [
+    {
+      icon: Target,
+      title: t("pages.about.mission.title"),
+      description: t("pages.about.mission.description")
+    },
+    {
+      icon: Eye,
+      title: t("pages.about.vision.title"),
+      description: t("pages.about.vision.description")
+    },
+    {
+      icon: Heart,
+      title: t("pages.about.values.title"),
+      description: t("pages.about.values.description")
+    }
+  ];
+
+  const stats = [
+    { number: "15+", label: t("pages.about.stats.experience") },
+    { number: "5000+", label: t("pages.about.stats.institutions") },
+    { number: "150+", label: t("pages.about.stats.countries") },
+    { number: "2M+", label: t("pages.about.stats.users") }
+  ];
+
+  const team = [
+    { name: "John Anderson", role: t("pages.about.team.ceo"), avatar: "JA" },
+    { name: "Sarah Mitchell", role: t("pages.about.team.cto"), avatar: "SM" },
+    { name: "David Kumar", role: t("pages.about.team.vpProduct"), avatar: "DK" },
+    { name: "Emily Chen", role: t("pages.about.team.headCustomerSuccess"), avatar: "EC" }
+  ];
   const heroRef = useRef<HTMLDivElement>(null);
   const storyRef = useRef<HTMLDivElement>(null);
   const valuesRef = useRef<HTMLDivElement>(null);

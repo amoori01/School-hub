@@ -147,7 +147,24 @@ export function DemoRequestPage() {
     // Simulate API call
     try {
       await new Promise((resolve) => setTimeout(resolve, 2500));
-      console.log("Demo request submitted:", formData);
+      
+      // Create new request object
+      const newRequest = {
+        id: `req_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+        ...formData,
+        createdAt: new Date().toISOString(),
+        status: "pending" as const,
+      };
+      
+      // Get existing requests from localStorage
+      const existingRequests = localStorage.getItem("demoRequests");
+      const requests = existingRequests ? JSON.parse(existingRequests) : [];
+      
+      // Add new request
+      requests.push(newRequest);
+      localStorage.setItem("demoRequests", JSON.stringify(requests));
+      
+      console.log("Demo request submitted:", newRequest);
       setIsSubmitted(true);
     } catch {
       console.error("Submission failed");

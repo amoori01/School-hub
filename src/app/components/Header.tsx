@@ -241,8 +241,6 @@ export function Header() {
 
             {/* Desktop CTA */}
             <div ref={ctaRef} className="hidden lg:flex items-center gap-2 sm:gap-3 lg:gap-4">
-              {/* Language Switcher */}
-              <LanguageSwitcher />
               {/* Theme Toggle Button */}
               <button
                 onClick={toggleTheme}
@@ -267,10 +265,6 @@ export function Header() {
 
             {/* Tablet/Mobile Menu Button */}
             <div className="flex lg:hidden items-center gap-2">
-              {/* Language Switcher for Mobile (Always Visible) */}
-              <div className="md:hidden">
-                <LanguageSwitcher />
-              </div>
               {/* Show Request Demo on tablet, hidden on mobile */}
               <Link to="/demo" className="hidden md:block">
                 <Button
@@ -385,11 +379,6 @@ export function Header() {
                   {t("header.contact")}
                 </Link>
                 <div className="pt-3 sm:pt-4 flex flex-col sm:flex-row gap-2 sm:gap-3">
-                  {/* Language Switcher for Mobile */}
-                  <div className="flex-1">
-                    <LanguageSwitcher />
-                  </div>
-                  {/* Theme Toggle for Mobile */}
                   <button
                     onClick={toggleTheme}
                     className="flex-1 flex items-center justify-center p-2.5 sm:p-3 rounded-lg sm:rounded-xl bg-secondary border border-border hover:bg-accent transition-all duration-300"
