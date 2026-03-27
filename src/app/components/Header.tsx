@@ -253,6 +253,8 @@ export function Header() {
                   <Sun className="h-4 w-4 lg:h-5 lg:w-5 text-yellow-600" />
                 )}
               </button>
+              {/* Language Switcher */}
+              <LanguageSwitcher />
               <Link to="/demo">
                 <Button
                   size="sm"
@@ -396,6 +398,10 @@ export function Header() {
                       </>
                     )}
                   </button>
+                  {/* Language Switcher for Mobile */}
+                  <div className="flex-1">
+                    <LanguageSwitcher />
+                  </div>
                   <Link to="/demo" className="flex-1 sm:hidden">
                     <Button
                       size="sm"

@@ -4,7 +4,7 @@ import { initReactI18next } from 'react-i18next';
 import en from './locales/en.json';
 import am from './locales/am.json';
 
-// Get saved language from localStorage or detect from browser
+// Get saved language from localStorage or default to English
 const getSavedLanguage = (): string => {
   // Check localStorage first
   try {
@@ -12,18 +12,12 @@ const getSavedLanguage = (): string => {
     if (savedLang && ['en', 'am'].includes(savedLang)) {
       return savedLang;
     }
-    
-    // Detect from browser language
-    const browserLang = navigator.language.split('-')[0];
-    if (browserLang === 'am') {
-      return 'am';
-    }
   } catch (e) {
     // localStorage might not be available (e.g., SSR)
     console.warn('Could not access localStorage:', e);
   }
   
-  // Default to English
+  // Always default to English (reverse: prioritize English over browser language)
   return 'en';
 };
 
