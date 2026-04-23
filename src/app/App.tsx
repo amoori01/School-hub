@@ -7,6 +7,7 @@ import { AboutPage } from "./pages/AboutPage";
 import { ContactPage } from "./pages/ContactPage";
 import { DemoRequestPage } from "./pages/DemoRequestPage";
 import { FeaturesPage } from "./pages/FeaturesPage";
+import { IntegrationsPage } from "./pages/IntegrationsPage";
 import { ModulesPage } from "./pages/ModulesPage";
 import { StudentInfoPage } from "./pages/StudentInfoPage";
 import { SolutionsPage } from "./pages/SolutionsPage";
@@ -56,6 +57,7 @@ function AppContent() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/demo" element={<DemoRequestPage />} />
           <Route path="/admin/demo-requests" element={<AdminDemoRequestsPage />} />
+          <Route path="/integrations" element={<IntegrationsPage />} />
         </Routes>
       </main>
       <Footer />

@@ -78,7 +78,7 @@ export function Footer() {
       </div>
       
       <div className="container mx-auto px-3 sm:px-4 lg:px-6 py-10 sm:py-14 lg:py-20 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-10 sm:mb-12 lg:mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 lg:gap-12 mb-10 sm:mb-12 lg:mb-16">
           {/* Company Info */}
           <div ref={addToRefs} className="company-column">
             <Link to="/" className="flex items-center space-x-2 sm:space-x-3 mb-4 sm:mb-6 group">
@@ -112,25 +112,51 @@ export function Footer() {
           <div ref={addToRefs} className="product-column">
             <h3 className="text-foreground font-semibold text-lg sm:text-xl mb-5 sm:mb-6 lg:mb-8">{t("footer.product")}</h3>
             <ul className="space-y-3 sm:space-y-4">
-              <li><Link to="/#features" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">{t("footer.features")}</Link></li>
-              <li><Link to="/#solutions" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">{t("footer.solutions")}</Link></li>
-              <li><Link to="/#pricing" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">{t("footer.pricing")}</Link></li>
-              <li><a href="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">Updates</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">Security</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">Integrations</a></li>
+              <li><Link to="/product/features" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">{t("footer.features")}</Link></li>
+              <li><Link to="/product/solutions" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">{t("footer.solutions")}</Link></li>
+              <li><Link to="/pricing" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">{t("footer.pricing")}</Link></li>
+              <li><Link to="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">Updates</Link></li>
+              <li><Link to="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">Security</Link></li>
+              <li><Link to="/integrations" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">{t("footer.integrations")}</Link></li>
             </ul>
           </div>
 
           {/* Company */}
-          <div ref={addToRefs} className="company-column">
+          <div ref={addToRefs} className="company-links-column">
             <h3 className="text-foreground font-semibold text-lg sm:text-xl mb-5 sm:mb-6 lg:mb-8">{t("footer.company")}</h3>
             <ul className="space-y-3 sm:space-y-4">
               <li><Link to="/about" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">{t("footer.aboutUs")}</Link></li>
-              <li><a href="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">{t("footer.careers")}</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">{t("footer.blog")}</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">Partners</a></li>
+              <li><Link to="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">{t("footer.careers")}</Link></li>
+              <li><Link to="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">{t("footer.blog")}</Link></li>
+              <li><Link to="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">Partners</Link></li>
               <li><Link to="/contact" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">{t("footer.contact")}</Link></li>
-              <li><a href="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">Press Kit</a></li>
+              <li><Link to="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">Press Kit</Link></li>
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div ref={addToRefs} className="resources-column">
+            <h3 className="text-foreground font-semibold text-lg sm:text-xl mb-5 sm:mb-6 lg:mb-8">{t("footer.resources")}</h3>
+            <ul className="space-y-3 sm:space-y-4">
+              <li><Link to="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">{t("footer.helpCenter")}</Link></li>
+              <li><Link to="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">{t("footer.documentation")}</Link></li>
+              <li><Link to="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">{t("footer.api")}</Link></li>
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div ref={addToRefs} className="legal-column">
+            <h3 className="text-foreground font-semibold text-lg sm:text-xl mb-5 sm:mb-6 lg:mb-8">{t("footer.legal")}</h3>
+            <ul className="space-y-4 sm:space-y-5">
+              <li>
+                <Link to="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">{t("footer.privacy")}</Link>
+              </li>
+              <li>
+                <Link to="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">{t("footer.terms")}</Link>
+              </li>
+              <li>
+                <Link to="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:translate-x-1 inline-block text-sm sm:text-base">{t("footer.cookies")}</Link>
+              </li>
             </ul>
           </div>
 
@@ -141,17 +167,17 @@ export function Footer() {
               <li className="flex items-start group">
                 <Mail className="h-4 w-4 sm:h-5 sm:w-5 mr-3 sm:mr-4 mt-0.5 flex-shrink-0 text-primary group-hover:text-primary/80 transition-colors duration-300 group-hover:scale-110" />
                 <div>
-                  <a href="mailto:support@edumanage.com" className="hover:text-primary transition-colors duration-300 text-muted-foreground text-sm sm:text-base">
+                  <Link to="mailto:support@edumanage.com" className="hover:text-primary transition-colors duration-300 text-muted-foreground text-sm sm:text-base">
                     support@edumanage.com
-                  </a>
+                  </Link>
                 </div>
               </li>
               <li className="flex items-start group">
                 <Phone className="h-4 w-4 sm:h-5 sm:w-5 mr-3 sm:mr-4 mt-0.5 flex-shrink-0 text-primary group-hover:text-primary/80 transition-colors duration-300 group-hover:scale-110" />
                 <div>
-                  <a href="tel:+15551234567" className="hover:text-primary transition-colors duration-300 text-muted-foreground text-sm sm:text-base">
+                  <Link to="tel:+15551234567" className="hover:text-primary transition-colors duration-300 text-muted-foreground text-sm sm:text-base">
                     +1 (555) 123-4567
-                  </a>
+                  </Link>
                 </div>
               </li>
               <li className="flex items-start group">
@@ -172,15 +198,15 @@ export function Footer() {
               {t("footer.copyright")}
             </p>
             <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-6 lg:space-x-8 text-xs sm:text-sm">
-              <a href="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:underline">
+              <Link to="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:underline">
                 {t("footer.privacy")}
-              </a>
-              <a href="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:underline">
+              </Link>
+              <Link to="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:underline">
                 {t("footer.terms")}
-              </a>
-              <a href="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:underline">
+              </Link>
+              <Link to="#" className="hover:text-primary transition-colors duration-300 text-muted-foreground hover:underline">
                 {t("footer.cookies")}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
