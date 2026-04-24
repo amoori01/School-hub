@@ -34,16 +34,7 @@ export function HeroSection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Animate gradient background
-      if (gradientRef.current) {
-        gsap.to(gradientRef.current, {
-          backgroundPosition: "200% 200%",
-          duration: 15,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut"
-        });
-      }
+      // Gradient background is now static for uniform appearance
 
       // Initial set for all elements
       gsap.set([badgeRef.current], { opacity: 0, y: -20, scale: 0.9 });
@@ -214,7 +205,7 @@ export function HeroSection() {
         }
       });
 
-      // Scale effect on image as you scroll (subtle zoom out)
+       // Scale effect on image as you scroll (subtle zoom out)
       gsap.to(imageRef.current, {
         scale: 1.05,
         ease: "none",
@@ -226,17 +217,7 @@ export function HeroSection() {
         }
       });
 
-      // Gradient background intensity change on scroll
-      gsap.to(gradientRef.current, {
-        opacity: 0.6,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1
-        }
-      });
+      // Gradient background is now static for uniform appearance
 
     }, sectionRef);
 
@@ -259,18 +240,11 @@ export function HeroSection() {
       ref={sectionRef}
       className="relative pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 lg:pb-32 overflow-hidden bg-background"
     >
-      {/* Animated gradient background - dark mode only */}
-      <div className="absolute inset-0 dark:block hidden overflow-hidden">
-        <div ref={gradientRef} className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#1d2642,_#020617_55%,_#020617_100%)]" />
-        <div className="pointer-events-none absolute -top-40 -right-32 h-96 w-96 rounded-full bg-[conic-gradient(from_220deg,_rgba(56,189,248,0.6),_rgba(236,72,153,0.55),_transparent)] blur-3xl opacity-70 animate-pulse-slow" />
-        <div className="pointer-events-none absolute -bottom-28 -left-24 h-80 w-80 rounded-full bg-[radial-gradient(circle,_rgba(56,189,248,0.3),_transparent_70%)] blur-3xl opacity-70 animate-pulse-slow-delayed" />
-      </div>
-
-      {/* Light mode gradient */}
-      <div className="absolute inset-0 dark:hidden overflow-hidden">
-        <div ref={gradientRef} className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-white" />
-        <div className="pointer-events-none absolute -top-40 -right-32 h-96 w-96 rounded-full bg-[conic-gradient(from_220deg,_rgba(99,102,241,0.3),_rgba(168,85,247,0.3),_transparent)] blur-3xl opacity-50" />
-        <div className="pointer-events-none absolute -bottom-28 -left-24 h-80 w-80 rounded-full bg-[radial-gradient(circle,_rgba(56,189,248,0.2),_transparent_70%)] blur-3xl opacity-50" />
+      {/* Background layer */}
+      <div className="absolute inset-0 block overflow-hidden">
+        <div ref={gradientRef} className="absolute inset-0 bg-background" />
+        <div className="pointer-events-none absolute -top-40 -right-32 h-96 w-96 rounded-full bg-[conic-gradient(from_220deg,_rgba(56,189,248,0.6),_rgba(236,72,153,0.55),_transparent)] blur-3xl opacity-70 animate-pulse-slow dark:opacity-70" />
+        <div className="pointer-events-none absolute -bottom-28 -left-24 h-80 w-80 rounded-full bg-[radial-gradient(circle,_rgba(56,189,248,0.3),_transparent_70%)] blur-3xl opacity-70 animate-pulse-slow-delayed dark:opacity-70" />
       </div>
 
       <div className="container mx-auto px-3 sm:px-4 lg:px-6 relative z-10">
