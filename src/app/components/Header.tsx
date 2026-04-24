@@ -174,7 +174,7 @@ export function Header() {
                 }}
                 className="flex items-center space-x-2 sm:space-x-3 group"
               >
-                <span className="text-xl sm:text-2xl font-extrabold bg-gradient-to-r from-[#e35336] via-cyan-300 to-fuchsia-400 bg-clip-text text-transparent group-hover:from-sky-300 group-hover:to-fuchsia-300 transition-all duration-300">
+                <span className="text-xl sm:text-2xl font-extrabold bg-gradient-to-r from-sky-300 via-cyan-300 to-fuchsia-300 bg-clip-text text-transparent group-hover:opacity-70 transition-all duration-300">
                   School Hub
                 </span>
               </button>

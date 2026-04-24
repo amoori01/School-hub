@@ -82,13 +82,10 @@ export function Footer() {
           {/* Company Info */}
           <div ref={addToRefs} className="company-column">
             <Link to="/" className="flex items-center space-x-2 sm:space-x-3 mb-4 sm:mb-6 group">
-              <div className="h-9 w-9 sm:h-10 sm:w-10 lg:h-11 lg:w-11 rounded-xl sm:rounded-2xl bg-[#e35336] dark:bg-[#f47236] flex items-center justify-center group-hover:scale-105 transition-all duration-300">
-                <span className="text-slate-950 font-extrabold text-lg sm:text-xl">E</span>
-              </div>
-              <span className="text-xl sm:text-2xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
-                School Hub
-              </span>
-            </Link>
+                <span className="text-xl sm:text-2xl font-extrabold bg-gradient-to-r from-sky-300 via-cyan-300 to-fuchsia-300 bg-clip-text text-transparent group-hover:opacity-70 transition-all duration-300">
+                  School Hub
+                </span>
+              </Link>
             <p className="text-muted-foreground mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
               {t("footer.description")}
             </p>
