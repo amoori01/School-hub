@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -306,20 +307,22 @@ export function HeroSection() {
               {t("hero.subtitle")}
             </p>
 
-            {/* CTAs */}
-            <div
-              ref={ctaRef}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12"
-            >
-              <Button
-                size="lg"
-                variant="outline"
-                className="border border-border bg-background dark:bg-background/60 hover:bg-secondary dark:hover:bg-secondary text-foreground text-base px-8 py-6 rounded-2xl font-medium transition-all duration-300 hover:border-primary/50 hover:text-primary hover:scale-[1.02] active:scale-[0.98] shadow-sm"
+              {/* CTAs */}
+              <div
+                ref={ctaRef}
+                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12"
               >
-                <Play className="mr-2 h-5 w-5" />
-                {t("hero.watchDemo")}
-              </Button>
-            </div>
+                <Link to="/demo">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border border-border bg-background dark:bg-background/60 hover:bg-secondary dark:hover:bg-secondary text-foreground text-base px-8 py-6 rounded-2xl font-medium transition-all duration-300 hover:border-primary/50 hover:text-primary hover:scale-[1.02] active:scale-[0.98] shadow-sm"
+                  >
+                    <Play className="mr-2 h-5 w-5" />
+                    {t("hero.watchDemo")}
+                  </Button>
+                </Link>
+              </div>
 
             {/* Stats */}
             <div
