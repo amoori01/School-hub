@@ -174,10 +174,7 @@ export function Header() {
                 }}
                 className="flex items-center space-x-2 sm:space-x-3 group"
               >
-                <div className="h-9 w-9 sm:h-11 sm:w-11 rounded-xl sm:rounded-2xl bg-[#e35336] dark:bg-[#f47236] flex items-center justify-center group-hover:scale-105 transition-all duration-300">
-                  <span className="text-slate-950 font-extrabold text-lg sm:text-xl">E</span>
-                </div>
-                <span className="text-xl sm:text-2xl font-semibold bg-gradient-to-r from-sky-400 via-cyan-300 to-fuchsia-400 bg-clip-text text-transparent group-hover:from-sky-300 group-hover:to-fuchsia-300 transition-all duration-300">
+                <span className="text-xl sm:text-2xl font-extrabold bg-gradient-to-r from-[#e35336] via-cyan-300 to-fuchsia-400 bg-clip-text text-transparent group-hover:from-sky-300 group-hover:to-fuchsia-300 transition-all duration-300">
                   School Hub
                 </span>
               </button>
